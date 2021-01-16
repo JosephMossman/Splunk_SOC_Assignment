@@ -1,0 +1,2 @@
+# Splunk_SOC_Assignment
+In this activity, I played the role of a SOC analyst tasked with using Splunk to monitor against potential attacks on your systems and applications. The client VSI has heard rumors that a competitor, JobeCorp, may be launching cyberattacks to disrupt VSI's business. The Networking team has provided you with past logs to help you develop baselines and create reports, alerts, and dashboards.
