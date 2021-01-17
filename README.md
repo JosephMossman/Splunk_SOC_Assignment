@@ -49,7 +49,7 @@ You've been provided the following logs:
 
           **Hint**: Research how to remove the duplicate values in your SPL search.
 
-   > `source="windows_server_logs.csv"  | table signature signature_id | dedup signature`
+   - `source="windows_server_logs.csv"  | table signature signature_id | dedup signature`
 
      ![sig_sigid](Screenshots/part1_win/sig_sigid_report.png)
 
@@ -57,17 +57,17 @@ You've been provided the following logs:
 
         - This will allow VSI to quickly know the severity levels of the Windows logs being viewed.
 
-   > `source="windows_server_logs.csv" |  top severity`
+   - `source="windows_server_logs.csv" |  top severity`
 
-   - [severity](Screenshots/part1_win/severity_report.png)
+   - ![severity](Screenshots/part1_win/severity_report.png)
 
-     3. A report that provides a comparison between the success and failure of Windows activities.
+       3. A report that provides a comparison between the success and failure of Windows activities.
 
-        - This will show VSI if there is a suspicious level of failed activities on their server.
+           - This will show VSI if there is a suspicious level of failed activities on their server.
 
-          **Hint**: Check the status field for this information.
+             **Hint**: Check the status field for this information.
 
-   > `source="windows_server_logs.csv"  status=failure` 
+   - `source="windows_server_logs.csv"  status=failure` 
 
      ![sucess_failure](Screenshots/part1_win/success_failure_report.png)
 
