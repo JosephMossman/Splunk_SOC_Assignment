@@ -16,17 +16,19 @@ You've been provided the following logs:
 
 - **Windows Server Logs**
 
-   - This server contains intellectual property of VSI's next-generation virtual reality programs.
-
    - [Windows Server Logs](Resources/windows_server_logs.csv)
+
    - [Windows Server Attack Logs](Resources/windows_server_attack_logs.csv)
+
+   - This server contains intellectual property of VSI's next-generation virtual reality programs.
 
 - **Apache Server Logs**
 
-   - This server is used for VSI's main public-facing website vsi-company.com.
-
    - [Apache Logs](Resources/apache_logs.txt)
+
    - [Apache Attack Logs](Resources/apache_attack_logs.txt)
+
+   - This server is used for VSI's main public-facing website vsi-company.com.
 
 ### Windows Server Logs Instructions and Deliverables
 
