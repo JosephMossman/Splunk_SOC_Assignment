@@ -37,23 +37,23 @@ You've been provided the following logs:
 
      1. A report with a table of signatures and associated SignatureID.
 
-         - This will allow VSI to easily view reports that show the ID number with a specific signature of the Windows activity.
+        - This will allow VSI to easily view reports that show the ID number with a specific signature of the Windows activity.
 
-           **Hint**: Research how to remove the duplicate values in your SPL search.
+          **Hint**: Research how to remove the duplicate values in your SPL search.
 
      2. A report that provides the count and percent of the severity.
 
-         - This will allow VSI to quickly know the severity levels of the Windows logs being viewed.
+        - This will allow VSI to quickly know the severity levels of the Windows logs being viewed.
 
      3. A report that provides a comparison between the success and failure of Windows activities.
 
-         - This will show VSI if there is a suspicious level of failed activities on their server.
+        - This will show VSI if there is a suspicious level of failed activities on their server.
 
-           **Hint**: Check the status field for this information.
+          **Hint**: Check the status field for this information.
 
    - `source="windows_server_logs.csv"  | table signature signature_id | dedup signature`
 
-    ![Sig_SigID](Screenshots/sig_sigid_report.png)
+    ![sig_sigid](Screenshots/Part1_WinLogs/sig_sigid_report.png)
 
    - **Alerts**: Design the following alerts to notify VSI of suspicious activity:
 
