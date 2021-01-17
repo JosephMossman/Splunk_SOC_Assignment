@@ -59,7 +59,7 @@ You've been provided the following logs:
 
    - `source="windows_server_logs.csv"  | table signature signature_id | dedup signature`
 
-     ![sig_sigid](Screenshots/Part1_WinLogs/sig_sigid_report.png)
+     ![sig_sigid](Screenshots/part1_win/sig_sigid_report.png)
 
    - **Alerts**: Design the following alerts to notify VSI of suspicious activity:
 
