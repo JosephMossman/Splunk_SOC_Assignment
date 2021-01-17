@@ -16,19 +16,19 @@ You've been provided the following logs:
 
 - **Windows Server Logs**
 
+   - This server contains intellectual property of VSI's next-generation virtual reality programs.
+
    - [Windows Server Logs](Resources/windows_server_logs.csv)
 
    - [Windows Server Attack Logs](Resources/windows_server_attack_logs.csv)
 
-   - This server contains intellectual property of VSI's next-generation virtual reality programs.
-
 - **Apache Server Logs**
+
+   - This server is used for VSI's main public-facing website vsi-company.com.
 
    - [Apache Logs](Resources/apache_logs.txt)
 
    - [Apache Attack Logs](Resources/apache_attack_logs.txt)
-
-   - This server is used for VSI's main public-facing website vsi-company.com.
 
 ### Windows Server Logs Instructions and Deliverables
 
@@ -67,17 +67,11 @@ You've been provided the following logs:
 
 Determine a baseline and threshold for hourly level of failed Windows activity.
 
-
 Create an alert to trigger when the threshold has been reached.
 The alert should trigger an email to SOC@VSI-company.com.
 
-
 Baseline for failed hourly attempts: 6. 
 Threshold for failed hourly attempts: 15.
-
-
-
-
 
 Determine a baseline and threshold for hourly count of the signature: an account was successfully logged on.
 
