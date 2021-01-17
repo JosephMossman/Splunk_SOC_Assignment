@@ -52,7 +52,8 @@ You've been provided the following logs:
            **Hint**: Check the status field for this information.
 
    - `source="windows_server_logs.csv"  | table signature signature_id | dedup signature`
-     ![Sig_SigID](Screenshots/sig_sigid_report.png)
+
+    ![Sig_SigID](Screenshots/sig_sigid_report.png)
 
    - **Alerts**: Design the following alerts to notify VSI of suspicious activity:
 
