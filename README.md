@@ -43,33 +43,33 @@ You've been provided the following logs:
 
    - **Reports**: Design the following reports to assist VSI with quickly identifying specific information.
 
-        1. A report with a table of signatures and associated SignatureID.
+       - A report with a table of signatures and associated SignatureID.
 
            - This will allow VSI to easily view reports that show the ID number with a specific signature of the Windows activity.
 
              **Hint**: Research how to remove the duplicate values in your SPL search.
 
-      - `source="windows_server_logs.csv"  | table signature signature_id | dedup signature`
+       - `source="windows_server_logs.csv"  | table signature signature_id | dedup signature`
 
-        ![sig_sigid](Screenshots/part1_win/sig_sigid_report.png)
+         ![sig_sigid](Screenshots/part1_win/sig_sigid_report.png)
 
-        2. A report that provides the count and percent of the severity.
+       - A report that provides the count and percent of the severity.
 
            - This will allow VSI to quickly know the severity levels of the Windows logs being viewed.
 
-      - `source="windows_server_logs.csv" |  top severity`
+       - `source="windows_server_logs.csv" |  top severity`
 
-      - ![severity](Screenshots/part1_win/severity_report.png)
+       - ![severity](Screenshots/part1_win/severity_report.png)
 
-          3. A report that provides a comparison between the success and failure of Windows activities.
+       - A report that provides a comparison between the success and failure of Windows activities.
 
-              - This will show VSI if there is a suspicious level of failed activities on their server.
+           - This will show VSI if there is a suspicious level of failed activities on their server.
 
-                **Hint**: Check the status field for this information.
+             **Hint**: Check the status field for this information.
 
-      - `source="windows_server_logs.csv"  status=failure` 
+       - `source="windows_server_logs.csv"  status=failure` 
 
-        ![sucess_failure](Screenshots/part1_win/success_failure_report.png)
+         ![sucess_failure](Screenshots/part1_win/success_failure_report.png)
 
    - **Alerts**: Design the following alerts to notify VSI of suspicious activity:
 
