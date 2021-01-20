@@ -491,6 +491,22 @@ Now you will set up a dashboard and analyze the results.
 
 Analyze your new dashboard results and answer the following questions:
 
+ `source="windows_server_logs.csv” signature="A user account was locked out" | timechart span=1h count by signature`
+
+ ![lockedout](Screenshots/part2_win/win_line_lockedout_sig.png)
+
+ `source="windows_server_attack_logs.csv” signature="A user account was locked out" | timechart span=1h count by signature`
+
+ ![lockedout_atk](Screenshots/part2_win/winatk_line_lockedout_sig.png)
+
+ `source="windows_server_logs.csv” signature="An attempt was made to reset an accounts password" | timechart span=1h count by signature`
+
+ ![accountpw](Screenshots/part2_win/win_line_accountpw_sig.png)
+
+ `source="windows_server_attack_logs.csv” signature="An attempt was made to reset an accounts password" | timechart span=1h count by signature`
+
+ ![accountpw_atk](Screenshots/part2_win/winatk_line_accountpw_sig.png)
+
 - Does anything stand out as suspicious?
 
    - There was suspicious activity with the signature “An account was locked out” from 12:00 a.m. to 3:00 a.m. on Wednesday, March 25th and with the signature “An attempt was made to reset an accounts password” from 8:00 a.m. to 11:00 a.m. on Wednesday, March 25th. 
@@ -513,6 +529,9 @@ Analyze your new dashboard results and answer the following questions:
 #### Dashboard Analysis for Time Chart of Users
 
 Analyze your new dashboard results and answer the following questions:
+
+
+
 
 - Does anything stand out as suspicious? 
 
