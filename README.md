@@ -274,73 +274,71 @@ You've been provided the following logs:
 
 - Fortunately, your SOC team had set up several monitoring solutions to help VSI quickly identify what was attacked.
 
-These monitoring solutions will also help VSI create mitigation strategies to protect the organization.
+- These monitoring solutions will also help VSI create mitigation strategies to protect the organization.
+
 You have been provided two logs files of suspicious activity:
-One for a Windows server
-One for an Apache web server
-Windows Server Logs
+
+- One for a Windows server
+
+- One for an Apache web server
+
+### Windows Server Logs
+
 Load the logs in your Splunk environment.
-Select all default options provided.
-Important: For the time range, always select All Time.
- - Important: For the time range, always select All Time.
-Important: For the time range, always select All Time.
+
+- Select all default options provided.
+- Important: For the time range, always select All Time.
+    - Important: For the time range, always select All Time.
+- Important: For the time range, always select All Time.
+
 Now you will review the reports you created in Part 1 and analyze the results.
-Report Analysis for Severity
-Access the Reports tab and select Yours to view the reports created from Part 1.
 
+#### Report Analysis for Severity
 
-Select the report you created to analyze the different severities.
+1. Access the Reports tab and select Yours to view the reports created from Part 1.
 
+2. Select the report you created to analyze the different severities.
 
-Select Edit > Open in Search.
+3. Select Edit > Open in Search.
 
+4. Take note of the percentages of different severities.
 
-Take note of the percentages of different severities.
+5. Change the source from windows_server_logs.csv to "source="windows_server_attack_logs.csv
 
-
-Change the source from windows_server_logs.csv to "source="windows_server_attack_logs.csv
-
-
-Select Save.
-
+6. Select Save.
 
 Review the updated results and answer the following question:
 
+- Did you detect any suspicious changes in severity?
 
-Did you detect any suspicious changes in severity?
+    - Informational: Went from 93% to 80% resulting in a 13% decrease.
+    - High: Went from 7% to 20% resulting in a 13% increase.
+    - These results suggest there are suspicious changes in severity.
 
+**Report Analysis for Failed Activities**
 
-Informational: Went from 93% to 80% resulting in a 13% decrease.
-High: Went from 7% to 20% resulting in a 13% increase.
-These results suggest there are suspicious changes in severity.
-Report Analysis for Failed Activities
-Access the Reports tab and select Yours to view the reports created from Part 1.
+1. Access the Reports tab and select Yours to view the reports created from Part 1.
 
+2. Select the report you created to analyze the different activities.
 
-Select the report you created to analyze the different activities.
+3. Select Edit > Open in Search.
 
+4. Take note of the failed activities percentage.
 
-Select Edit > Open in Search.
+5. Change the source from windows_server_logs.csv to "source="windows_server_attack_logs.csv.
 
-
-Take note of the failed activities percentage.
-
-
-Change the source from windows_server_logs.csv to "source="windows_server_attack_logs.csv.
-
-
-Select Save.
+6. Select Save.
 
 Review the updated results and answer the following question:
 
+- Did you detect any suspicious changes in failed activities?
 
-Did you detect any suspicious changes in failed activities?
+    - Success: Went from 97% to 98% resulting in a 1% increase.
+    - Failure: Went from 3% to 2% resulting in a 1% decrease.
+    - These results suggest there were no major changes in failed activities.
 
-
-Success: Went from 97% to 98% resulting in a 1% increase.
-Failure: Went from 3% to 2% resulting in a 1% decrease.
-These results suggest there were no major changes in failed activities.
 Now you will review the alerts you created in Part 1 and analyze the results.
+
 Alert Analysis for Failed Windows Activity
 Access the Alerts tab and select Yours to view the alerts created in Part 1.
 
