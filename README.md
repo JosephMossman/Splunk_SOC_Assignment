@@ -49,96 +49,82 @@ You've been provided the following logs:
 
              **Hint**: Research how to remove the duplicate values in your SPL search.
 
-       - `source="windows_server_logs.csv"  | table signature signature_id | dedup signature`
-
+       - `source="windows_server_logs.csv" | table signature signature_id | dedup signature`
          ![sig_sigid](Screenshots/part1_win/sig_sigid_report.png)
 
        - A report that provides the count and percent of the severity.
 
            - This will allow VSI to quickly know the severity levels of the Windows logs being viewed.
 
-       - `source="windows_server_logs.csv" |  top severity`
-
-       - ![severity](Screenshots/part1_win/severity_report.png)
+       - `source="windows_server_logs.csv" | top severity`
+         ![severity](Screenshots/part1_win/severity_report.png)
 
        - A report that provides a comparison between the success and failure of Windows activities.
 
            - This will show VSI if there is a suspicious level of failed activities on their server.
 
-             **Hint**: Check the status field for this information.
+             **Hint**: Check the 'status' field for this information.
 
-       - `source="windows_server_logs.csv"  status=failure` 
-
+       - `source="windows_server_logs.csv" status=failure` 
          ![sucess_failure](Screenshots/part1_win/success_failure_report.png)
 
    - **Alerts**: Design the following alerts to notify VSI of suspicious activity:
 
-Determine a baseline and threshold for hourly level of failed Windows activity.
+       - Determine a baseline and threshold for hourly level of failed Windows activity.
 
-Create an alert to trigger when the threshold has been reached.
-The alert should trigger an email to SOC@VSI-company.com.
+           - Create an alert to trigger when the threshold has been reached.
+           - The alert should trigger an email to SOC@VSI-company.com.
 
-Baseline for failed hourly attempts: 6. 
-Threshold for failed hourly attempts: 15.
+           - Baseline for failed hourly attempts: 6. 
+           - Threshold for failed hourly attempts: 15.
 
-Determine a baseline and threshold for hourly count of the signature: an account was successfully logged on.
+       - `source="windows_server_logs.csv" status=failure` 
+         ![sus_activity](Screenshots/part1_win/sus_activty_alert_final.png)
 
+       - Determine a baseline and threshold for hourly count of the signature: an account was successfully logged on.
 
-Create an alert to trigger when the threshold has been reached.
-The alert should trigger an email to SOC@VSI-company.com.
+           - Create an alert to trigger when the threshold has been reached.
+           - The alert should trigger an email to SOC@VSI-company.com.
 
+           - Baseline for hourly success of logged on accounts: 12.
+           - Threshold for hourly success of logged on accounts: 30.
 
-Baseline for hourly success of logged on accounts: 12.
-Threshold for hourly success of logged on accounts: 30.
+       - `source="windows_server_logs.csv" signature="An account was successfully logged on"`
+       - ![success](Screenshots/part1_win/success_alert_final.png)
 
-Determine a baseline and threshold for hourly count of the signature: a user account was deleted.
+       - Determine a baseline and threshold for hourly count of the signature: a user account was deleted.
 
+           - Design the alert based on the corresponding SignatureID, as the signature name sometimes changes when the Windows system updates.
+           - Create an alert to trigger when the threshold has been reached.
+           - The alert should trigger an email to SOC@VSI-company.com.
 
-Design the alert based on the corresponding SignatureID, as the signature name sometimes changes when the Windows system updates.
-Create an alert to trigger when the threshold has been reached.
-The alert should trigger an email to SOC@VSI-company.com.
+           - Baseline for hourly deleted user accounts: 13.
+           - Threshold for hourly deleted user accounts: 50.
 
+       - `source="windows_server_logs.csv" signature_id=4726`
+       - ![deleted](Screenshots/part1_win/deleted_account_alert_final.png)
 
-Baseline for hourly deleted user accounts: 13.
-Threshold for hourly deleted user accounts: 50.
+   - **Visualizations and Dashboards**: Design the following visualizations and add them to a dashboard called Windows Server Monitoring:
 
+       - A line chart that displays the different 'signature' field values over time.
 
+         **Hint**: Add the following after your search: 'timechart span=1h count by signature'.
 
+       - A line chart that displays the different 'user' field values over time.
 
-Visualizations and Dashboards: Design the following visualizations and add them to a dashboard called Windows Server Monitoring:
+       - A bar, column, or pie chart that illustrates the count of different signatures.
 
+       - A bar, column, or pie chart that illustrates the count of different users.
 
-A line chart that displays the different signature field values over time.
+       - A statistical chart that illustrates the count of different users.
 
+       - One single value visualization of your choice: radial gauge, marker gauge, etc.
 
-Hint: Add the following after your search: timechart span=1h count by signature.
+4. On your dashboard, add the ability to change the time range for all your visualizations.
 
-A line chart that displays the different user field values over time.
+   - Be sure to title all your panels appropriately.
 
-A bar, column, or pie chart that illustrates the count of different signatures.
-
-
-A bar, column, or pie chart that illustrates the count of different users.
-
-A statistical chart that illustrates the count of different users.
-
-
-
-
-
-One single value visualization of your choice: radial gauge, marker gauge, etc.
-
-On your dashboard, add the ability to change the time range for all your visualizations.
-
-
-Be sure to title all your panels appropriately.
-Align your dashboard panels as you see fit.
-
-
-
-
-
-
+   - Align your dashboard panels as you see fit.
 
 
 
