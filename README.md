@@ -150,7 +150,7 @@ You've been provided the following logs:
 
 4. On your dashboard, add the ability to change the time range for all your visualizations.
 
-         ![dashboard_timerange](Screenshots/part1_win/dashboard_time_range.png)
+         ![timerange](Screenshots/part1_win/dashboard_time_range.png)
 
    - Be sure to title all your panels appropriately.
 
