@@ -17,17 +17,13 @@ You've been provided the following logs:
 - **Windows Server Logs**
 
    - This server contains intellectual property of VSI's next-generation virtual reality programs.
-
    - [Windows Server Logs](Resources/windows_server_logs.csv)
-
    - [Windows Server Attack Logs](Resources/windows_server_attack_logs.csv)
 
 - **Apache Server Logs**
 
    - This server is used for VSI's main public-facing website vsi-company.com.
-
    - [Apache Logs](Resources/apache_logs.txt)
-
    - [Apache Attack Logs](Resources/apache_attack_logs.txt)
 
 ### Windows Server Logs Instructions and Deliverables
@@ -83,7 +79,7 @@ You've been provided the following logs:
 
        - `source="windows_server_logs.csv" status=failure`
  
-         ![sus_activity](Screenshots/part1_win/sus_activty_alert_final.png)
+         ![sus_activity](Screenshots/part1_win/sus_activity_alert_final.png)
 
        - Determine a baseline and threshold for hourly count of the signature: an account was successfully logged on.
 
@@ -95,7 +91,7 @@ You've been provided the following logs:
 
        - `source="windows_server_logs.csv" signature="An account was successfully logged on"`
 
-       - ![success](Screenshots/part1_win/success_alert_final.png)
+         ![success](Screenshots/part1_win/success_alert_final.png)
 
        - Determine a baseline and threshold for hourly count of the signature: a user account was deleted.
 
@@ -108,39 +104,60 @@ You've been provided the following logs:
 
        - `source="windows_server_logs.csv" signature_id=4726`
 
-       - ![deleted](Screenshots/part1_win/deleted_account_alert_final.png)
+         ![deleted](Screenshots/part1_win/deleted_account_alert_final.png)
 
    - **Visualizations and Dashboards**: Design the following visualizations and add them to a dashboard called Windows Server Monitoring:
 
+         **Hint**: Add the following after your search: `timechart span=1h count by signature`.
+
        - A line chart that displays the different `signature` field values over time.
 
-         **Hint**: Add the following after your search: `timechart span=1h count by signature`.
+       - `source="windows_server_logs.csv" | timechart span=1h count by signature`
+
+         ![sig_line](Screenshots/part1_win/sig_line_chart.png)
 
        - A line chart that displays the different `user` field values over time.
 
+       - `source="windows_server_logs.csv" | timechart span=1h count by user`
+
+         ![user_line](Screenshots/part1_win/user_line_chart.png)
+
        - A bar, column, or pie chart that illustrates the count of different signatures.
+
+       - `source="windows_server_logs.csv" | top limit=10 signature | timechart span=1h count by signature`
+
+       - ![sig_bar](Screenshots/part1_win/sig_bar_chart.png)
 
        - A bar, column, or pie chart that illustrates the count of different users.
 
+       - `source="windows_server_logs.csv" | top limit=10 user | timechart span=1h count by user'
+
+       - ![user_bar](Screenshots/part1_win/user_bar_chart.png)
+
        - A statistical chart that illustrates the count of different users.
+
+       - `source="windows_server_logs.csv" | top limit=10 user | timechart span=1h count by user`
+
+       - ![user_stat](Screenshots/part1_win/user_stat_chart.png)
 
        - One single value visualization of your choice: radial gauge, marker gauge, etc.
 
+       - `source="windows_server_logs.csv" signature="special privleges assigned to new logon" | timechart span=1h count by signature`
+
+       - ![single_value](Screenshots/part1_win/single_value_privledges_winlogs.png)
+
 4. On your dashboard, add the ability to change the time range for all your visualizations.
+
+        ![dashboard_timerange](Screenshots/part1_win/dashboard_time_range.png)
 
    - Be sure to title all your panels appropriately.
 
    - Align your dashboard panels as you see fit.
 
 
+###Apache Web Server Instructions and Deliverables
 
-
-
-
-
-Apache Web Server Instructions and Deliverables
-Load the logs into your Splunk environment.
-
+- Load the logs into your Splunk environment.
 
 Select all default options provided.
 Important: For the time range, select All Time.
