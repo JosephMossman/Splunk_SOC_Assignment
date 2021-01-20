@@ -2,6 +2,7 @@
 
 - In this activity, I played the role of a SOC analyst hired by Virutal Space Industries (VSI) tasked with using Splunk to monitor against potential attacks from JobeCorp.
 
+
 ## Activity File: Part 1 - Master of the SOC
 
 - Each group is playing the role of an SOC analyst at a small company called Virtual Space Industries (VSI), which designs virtual reality programs for businesses.
@@ -13,6 +14,7 @@
 - Your Networking team has provided you with past logs to help you develop baselines and create reports, alerts, and dashboards.
 
 You've been provided the following logs:
+
 
 - **Windows Server Logs**
 
@@ -45,7 +47,7 @@ You've been provided the following logs:
 
              **Hint**: Research how to remove the duplicate values in your SPL search.
 
-       - `source="windows_server_logs.csv" | table signature signature_id | dedup signature`
+         `source="windows_server_logs.csv" | table signature signature_id | dedup signature`
 
          ![sig_sigid](Screenshots/part1_win/sig_sigid_report.png)
 
@@ -53,7 +55,7 @@ You've been provided the following logs:
 
            - This will allow VSI to quickly know the severity levels of the Windows logs being viewed.
 
-       - `source="windows_server_logs.csv" | top severity`
+         `source="windows_server_logs.csv" | top severity`
 
          ![severity](Screenshots/part1_win/severity_report.png)
 
@@ -63,7 +65,7 @@ You've been provided the following logs:
 
              **Hint**: Check the `status` field for this information.
 
-       - `source="windows_server_logs.csv" status=failure`
+         `source="windows_server_logs.csv" status=failure`
  
          ![sucess_failure](Screenshots/part1_win/success_failure_report.png)
 
@@ -77,7 +79,7 @@ You've been provided the following logs:
            - Baseline for failed hourly attempts: 6. 
            - Threshold for failed hourly attempts: 15.
 
-       - `source="windows_server_logs.csv" status=failure`
+         `source="windows_server_logs.csv" status=failure`
  
          ![sus_activity](Screenshots/part1_win/sus_activity_alert_final.png)
 
@@ -89,7 +91,7 @@ You've been provided the following logs:
            - Baseline for hourly success of logged on accounts: 12.
            - Threshold for hourly success of logged on accounts: 30.
 
-       - `source="windows_server_logs.csv" signature="An account was successfully logged on"`
+         `source="windows_server_logs.csv" signature="An account was successfully logged on"`
 
          ![success](Screenshots/part1_win/success_alert_final.png)
 
@@ -102,7 +104,7 @@ You've been provided the following logs:
            - Baseline for hourly deleted user accounts: 13.
            - Threshold for hourly deleted user accounts: 50.
 
-       - `source="windows_server_logs.csv" signature_id=4726`
+         `source="windows_server_logs.csv" signature_id=4726`
 
          ![deleted](Screenshots/part1_win/deleted_account_alert_final.png)
 
@@ -112,43 +114,43 @@ You've been provided the following logs:
 
        - A line chart that displays the different `signature` field values over time.
 
-       - `source="windows_server_logs.csv" | timechart span=1h count by signature`
+         `source="windows_server_logs.csv" | timechart span=1h count by signature`
 
          ![sig_line](Screenshots/part1_win/sig_line_chart.png)
 
        - A line chart that displays the different `user` field values over time.
 
-       - `source="windows_server_logs.csv" | timechart span=1h count by user`
+         `source="windows_server_logs.csv" | timechart span=1h count by user`
 
          ![user_line](Screenshots/part1_win/user_line_chart.png)
 
        - A bar, column, or pie chart that illustrates the count of different signatures.
 
-       - `source="windows_server_logs.csv" | top limit=10 signature | timechart span=1h count by signature`
+         `source="windows_server_logs.csv" | top limit=10 signature | timechart span=1h count by signature`
 
-       - ![sig_bar](Screenshots/part1_win/sig_bar_chart.png)
+         ![sig_bar](Screenshots/part1_win/sig_bar_chart.png)
 
        - A bar, column, or pie chart that illustrates the count of different users.
 
-       - `source="windows_server_logs.csv" | top limit=10 user | timechart span=1h count by user'
+         `source="windows_server_logs.csv" | top limit=10 user | timechart span=1h count by user'
 
-       - ![user_bar](Screenshots/part1_win/user_bar_chart.png)
+         ![user_bar](Screenshots/part1_win/user_bar_chart.png)
 
        - A statistical chart that illustrates the count of different users.
 
-       - `source="windows_server_logs.csv" | top limit=10 user | timechart span=1h count by user`
+         `source="windows_server_logs.csv" | top limit=10 user | timechart span=1h count by user`
 
-       - ![user_stat](Screenshots/part1_win/user_stat_chart.png)
+         ![user_stat](Screenshots/part1_win/user_stat_chart.png)
 
        - One single value visualization of your choice: radial gauge, marker gauge, etc.
 
-       - `source="windows_server_logs.csv" signature="special privleges assigned to new logon" | timechart span=1h count by signature`
+         `source="windows_server_logs.csv" signature="special privleges assigned to new logon" | timechart span=1h count by signature`
 
-       - ![single_value](Screenshots/part1_win/single_value_privledges_winlogs.png)
+         ![single_value](Screenshots/part1_win/single_value_privledges_winlogs.png)
 
 4. On your dashboard, add the ability to change the time range for all your visualizations.
 
-        ![dashboard_timerange](Screenshots/part1_win/dashboard_time_range.png)
+         ![dashboard_timerange](Screenshots/part1_win/dashboard_time_range.png)
 
    - Be sure to title all your panels appropriately.
 
