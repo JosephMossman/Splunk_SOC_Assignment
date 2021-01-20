@@ -3,7 +3,6 @@
 - In this activity, I played the role of a SOC analyst hired by Virutal Space Industries (VSI) tasked with using Splunk to monitor against potential attacks from JobeCorp.
 
 
-
 ## Activity File: Part 1 - Master of the SOC
 
 - Each group is playing the role of an SOC analyst at a small company called Virtual Space Industries (VSI), which designs virtual reality programs for businesses.
@@ -16,7 +15,6 @@
 
 You've been provided the following logs:
 
-
 - **Windows Server Logs**
 
    - This server contains intellectual property of VSI's next-generation virtual reality programs.
@@ -28,7 +26,6 @@ You've been provided the following logs:
    - This server is used for VSI's main public-facing website vsi-company.com.
    - [Apache Logs](Resources/apache_logs.txt)
    - [Apache Attack Logs](Resources/apache_attack_logs.txt)
-
 
 
 ### Windows Server Logs Instructions and Deliverables
@@ -160,7 +157,6 @@ You've been provided the following logs:
    - Align your dashboard panels as you see fit.
 
 
-
 ### Apache Web Server Instructions and Deliverables
 
 1. Load the logs into your Splunk environment.
@@ -270,7 +266,6 @@ You've been provided the following logs:
    - Align your dashboard panels as you see fit.
 
      ![dashtime](Screenshots/part1_apache/time_dashboard.png)
-
 
 
 ## Activity File: Part 2 - Defend Your SOC
