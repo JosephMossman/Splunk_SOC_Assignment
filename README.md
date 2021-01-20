@@ -3,6 +3,7 @@
 - In this activity, I played the role of a SOC analyst hired by Virutal Space Industries (VSI) tasked with using Splunk to monitor against potential attacks from JobeCorp.
 
 
+
 ## Activity File: Part 1 - Master of the SOC
 
 - Each group is playing the role of an SOC analyst at a small company called Virtual Space Industries (VSI), which designs virtual reality programs for businesses.
@@ -27,6 +28,8 @@ You've been provided the following logs:
    - This server is used for VSI's main public-facing website vsi-company.com.
    - [Apache Logs](Resources/apache_logs.txt)
    - [Apache Attack Logs](Resources/apache_attack_logs.txt)
+
+
 
 ### Windows Server Logs Instructions and Deliverables
 
@@ -157,6 +160,7 @@ You've been provided the following logs:
    - Align your dashboard panels as you see fit.
 
 
+
 ### Apache Web Server Instructions and Deliverables
 
 1. Load the logs into your Splunk environment.
@@ -174,7 +178,7 @@ You've been provided the following logs:
 
            - This will provide insight into the type of HTTP activity being requested against their web server.
 
-           ` `source="apache_logs.txt" | top method`
+           `source="apache_logs.txt" | top method`
 
            ![method](Screenshots/part1_apache/http_methods_report.png)
 
@@ -182,7 +186,7 @@ You've been provided the following logs:
 
            - This will assist VSI with identifying suspicious referrers.
 
-           ` `source="apache_logs.txt" | top limit=10 referer_domain`
+           `source="apache_logs.txt" | top limit=10 referer_domain`
 
            ![reffered](Screenshots/part1_apache/referred_top_10_report.png)
 
@@ -190,7 +194,7 @@ You've been provided the following logs:
 
            - This will provide insight into any suspicious levels of HTTP responses.
 
-           ` `source="apache_logs.txt" | top status`
+           `source="apache_logs.txt" | top status`
 
            ![reponse](Screenshots/part1_apache/reponse_codes_report.png)
 
@@ -204,7 +208,7 @@ You've been provided the following logs:
            - Baseline for hourly activity is 80
            - Threshold for hourly activity is 170
 
-           ` `source="apache_logs.txt" | iplocation clientip | where Country!="United States"`
+           `source="apache_logs.txt" | iplocation clientip | where Country!="United States"`
 
            ![iplocation](Screenshots/part1_apache/iplocation_alert_final.png)
 
@@ -216,21 +220,21 @@ You've been provided the following logs:
            - Baseline for hourly count of HTTP POST method is 2
            - Threshold for hourly count of HTTP POST method is 12
 
-           ` `source="apache_logs.txt" method=POST`
+           `source="apache_logs.txt" method=POST`
 
            ![http_post](Screenshots/part1_apache/http_post_alert_final.png)
 
    - **Visualizations and Dashboards**: Design the following visualizations and add them to a dashboard called Apache WebServer Monitoring.
 
-       ** Hint**: Add the following after your search: timechart span=1h count by method.
+       **Hint**: Add the following after your search: `timechart span=1h count by method`.
 
-       - A line chart that displays the different HTTP methods field over time.
+       - A line chart that displays the different HTTP `methods` field over time.
 
            `source="apache_logs.txt" | timechart span=1h count by method`
 
            ![method](Screenshots/part1_apache/http_methods_line_chart.png)
 
-       - A cluster map showing the locations based on the clientip field.
+       - A cluster map showing the locations based on the `clientip` field.
 
            `source="apache_logs.txt" | iplocation clientip | geostats count`
 
@@ -265,7 +269,8 @@ You've been provided the following logs:
    - Be sure to title all your panels appropriately.
    - Align your dashboard panels as you see fit.
 
-       ![dashtime](Screenshots/part1_apache/time_dashboard.png)
+     ![dashtime](Screenshots/part1_apache/time_dashboard.png)
+
 
 
 ## Activity File: Part 2 - Defend Your SOC
