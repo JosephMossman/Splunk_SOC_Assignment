@@ -343,6 +343,14 @@ Review the updated results and answer the following question:
 
 Review the updated results and answer the following question:
 
+ `source="windows_server_logs.csv" | top status`
+
+ ![success](Screenshots/part2_win/success_failure_winlogs.png)
+
+ `source="windows_server_attack_logs.csv" | top status`
+
+ ![success_atk](Screenshots/part2_win/success_failure_winatklogs.png)
+
 - Did you detect any suspicious changes in failed activities?
 
     - Success: Went from 97% to 98% resulting in a 1% increase.
@@ -362,6 +370,14 @@ Now you will review the alerts you created in Part 1 and analyze the results.
 4. Change the source from `windows_server_logs.csv` to `source="windows_server_attack_logs.csv"`.
 
 Review the updated results and answer the following questions:
+
+ `source="windows_server_logs.csv" status=failure`
+
+ ![sus](Screenshots/part2_win/sus_alert_winlogs.png)
+
+ `source="windows_server_attack_logs.csv status-failure`
+
+ ![sus_atk](Screenshots/part2_win/sus_alert_winatklogs.png)
 
 - Did you detect a suspicious volume of failed activity?
 
@@ -394,6 +410,14 @@ Review the updated results and answer the following questions:
 4. Change the source from `windows_server_logs.csv` to `source="windows_server_attack_logs.csv"`.
 
 Review the updated results, and answer the following questions:
+
+ `source="windows_server_logs.csv” signature="An account was successfully logged on"`
+
+ ![loggedon](Screenshots/part2_win/loggedon_alert_winlogs.png)
+
+ `source="windows_server_attack_logs.csv" signature="An account was successfully logged on"`
+
+ ![loggedon_atk](Screenshots/part2_win/loggedon_alert_winatklogs.png)
 
 - Did you detect a suspicious volume of successful logons?
 
@@ -430,6 +454,14 @@ Review the updated results, and answer the following questions:
 4. Change the source from `windows_server_logs.csv` to `source="windows_server_attack_logs.csv"`.
 
 Review the updated results and answer the following question:
+
+ `source="windows_server_logs.csv” signature_id=4726`
+
+ ![deleted](Screenshots/part2_win/deleted_alert_winlogs.png)
+
+ `source="windows_server_attack_logs.csv” signature_id=4726`
+
+ ![deleted_atk](Screenshots/part2_win/deleted_alert_winatklogs.png)
 
 - Did you detect a suspicious volume of deleted accounts?
 
