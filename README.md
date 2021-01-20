@@ -262,10 +262,10 @@ You've been provided the following logs:
 
 4. On your dashboard, add the ability to change the time range for all your visualizations:
 
+   ![dashtime](Screenshots/part1_apache/time_dashboard.png)
+
    - Be sure to title all your panels appropriately.
    - Align your dashboard panels as you see fit.
-
-   ![dashtime](Screenshots/part1_apache/time_dashboard.png)
 
 
 ## Activity File: Part 2 - Defend Your SOC
@@ -278,36 +278,48 @@ You've been provided the following logs:
 
 You have been provided two logs files of suspicious activity:
 
-- One for a Windows server
+- One for a Windows server.
 
-- One for an Apache web server
+   - [Windows Server Attack Logs](Resources/windows_server_attack_logs.csv)
+
+- One for an Apache web server.
+
+   - [Apache Attack Logs](Resources/apache_attack_logs.txt)
 
 ### Windows Server Logs
 
 Load the logs in your Splunk environment.
 
 - Select all default options provided.
-- Important: For the time range, always select All Time.
-    - Important: For the time range, always select All Time.
-- Important: For the time range, always select All Time.
+- **Important**: For the time range, always select **All Time**.
+    - **Important**: For the time range, always select **All Time**.
+- **Important**: For the time range, always select **All Time**.
 
 Now you will review the reports you created in Part 1 and analyze the results.
 
 #### Report Analysis for Severity
 
-1. Access the Reports tab and select Yours to view the reports created from Part 1.
+1. Access the **Reports** tab and select **Yours** to view the reports created from Part 1.
 
 2. Select the report you created to analyze the different severities.
 
-3. Select Edit > Open in Search.
+3. Select **Edit** > **Open in Search**.
 
 4. Take note of the percentages of different severities.
 
-5. Change the source from windows_server_logs.csv to "source="windows_server_attack_logs.csv
+5. Change the source from `windows_server_logs.csv` to `source="windows_server_attack_logs.csv"`.
 
-6. Select Save.
+6. Select **Save**.
 
 Review the updated results and answer the following question:
+
+ `source="windows_server_logs.csv" | top severity`
+
+ ![severity](Screenshots/part2_win/severity_winlogs.png)
+
+ `source="Windows_server_attack_logs.csv" | top severity`
+
+ ![severity_atk](Screenshots/part2_win/severity_winatklogs.png)
 
 - Did you detect any suspicious changes in severity?
 
@@ -315,19 +327,19 @@ Review the updated results and answer the following question:
     - High: Went from 7% to 20% resulting in a 13% increase.
     - These results suggest there are suspicious changes in severity.
 
-**Report Analysis for Failed Activities**
+#### Report Analysis for Failed Activities
 
-1. Access the Reports tab and select Yours to view the reports created from Part 1.
+1. Access the **Reports** tab and select **Yours** to view the reports created from Part 1.
 
 2. Select the report you created to analyze the different activities.
 
-3. Select Edit > Open in Search.
+3. Select **Edit** > **Open in Search**.
 
 4. Take note of the failed activities percentage.
 
-5. Change the source from windows_server_logs.csv to "source="windows_server_attack_logs.csv.
+5. Change the source from `windows_server_logs.csv` to `source="windows_server_attack_logs.csv"`.
 
-6. Select Save.
+6. Select **Save**.
 
 Review the updated results and answer the following question:
 
@@ -339,333 +351,218 @@ Review the updated results and answer the following question:
 
 Now you will review the alerts you created in Part 1 and analyze the results.
 
-Alert Analysis for Failed Windows Activity
-Access the Alerts tab and select Yours to view the alerts created in Part 1.
+#### Alert Analysis for Failed Windows Activity
 
+1. Access the **Alerts** tab and select **Yours** to view the alerts created in Part 1.
 
-Select the alert for suspicious volume of failed activities.
+2. Select the alert for suspicious volume of failed activities.
 
+3. Select **Open in Search**.
 
-Select Open in Search.
-
-
-Change the source from windows_server_logs.csv to "source="windows_server_attack_logs.csv.
-
-
+4. Change the source from `windows_server_logs.csv` to `source="windows_server_attack_logs.csv"`.
 
 Review the updated results and answer the following questions:
 
+- Did you detect a suspicious volume of failed activity?
 
-Did you detect a suspicious volume of failed activity?
+    - There was potential for a suspicious volume of failed activity at 8:00 a.m. on Wednesday, March 25th.  
 
+- If so, what was the count of events in the hour(s) it occurred?
 
-There was potential for a suspicious volume of failed activity at 8:00 a.m. on Wednesday, March 25th.  
+    - The count of activity was 35 events during this hour.
 
+- When did it occur?
 
-If so, what was the count of events in the hour(s) it occurred?
+    - 8:00 a.m. on Wednesday, March 25th.
 
+- Would your alert be triggered for this activity?
 
-The count of activity was 35 events during this hour.
+    - Yes, the alert is within the trigger threshold. 
 
+- After reviewing, would you change your threshold from what you previously selected?
 
-When did it occur?
+    - No change in threshold necessary.
 
+#### Alert Analysis for Successful Logons
 
-8:00 a.m. on Wednesday, March 25th.
+1. Access the **Alerts** tab and select **Yours** to view the alerts created in Part 1.
 
+2. Select the alert of suspicious volume of successful logons.
 
-Would your alert be triggered for this activity?
+3. Select **Open in Search**.
 
+4. Change the source from `windows_server_logs.csv` to `source="windows_server_attack_logs.csv"`.
 
-Yes, the alert is within the trigger threshold. 
-
-
-After reviewing, would you change your threshold from what you previously selected?
-
-
-No change in threshold necessary.
-
-
-Alert Analysis for Successful Logons
-Access the Alerts tab and select Yours to view the alerts created in Part 1.
-
-
-Select the alert of suspicious volume of successful logons.
-
-
-Select Open in Search.
-
-
-Change the source from windows_server_logs.csv to "source="windows_server_attack_logs.csv.
 Review the updated results, and answer the following questions:
 
+- Did you detect a suspicious volume of successful logons?
 
-Did you detect a suspicious volume of successful logons?
+    - There was potential for suspicious activity at 11:00 a.m. and 12:00 p.m. on Wednesday, March 25th. 
 
+- If so, what was the count of events in the hour(s) it occurred?
 
-There was potential for suspicious activity at 11:00 a.m. and 12:00 p.m. on Wednesday, March 25th. 
+    - The count of activity is 196 events at 11:00 a.m. and 77 events at 12:00 p.m.
 
+- Who is the primary user logging in?
 
-If so, what was the count of events in the hour(s) it occurred?
+    - The primary user logging in was user_j.
 
+- When did it occur?
 
-The count of activity is 196 events at 11:00 a.m. and 77 events at 12:00 p.m.
+    - The suspicious activities occurred at 11:00 a.m. and 12:00 p.m. on Wednesday, March 25th. 
 
+- Would your alert be triggered for this activity?
 
+    - Yes, the alert is within the trigger threshold. 
 
-Who is the primary user logging in?
+- After reviewing, would you change your threshold from what you previously selected?
 
+    - No change in threshold necessary.
 
-The primary user logging in was user_j.
+#### Alert Analysis for Deleted Accounts
 
+1. Access the **Alerts** tab and select **Yours** to view the alerts created in Part 1.
 
-When did it occur?
+2. Select the alert of suspicious volume of deleted accounts.
 
+3. Select **Open in Search**.
 
-The suspicious activities occurred at 11:00 a.m. and 12:00 p.m. on Wednesday, March 25th. 
-
-
-Would your alert be triggered for this activity?
-
-
-Yes, the alert is within the trigger threshold. 
-
-
-After reviewing, would you change your threshold from what you previously selected?
-
-
-No change in threshold necessary.
-Alert Analysis for Deleted Accounts
-Access the Alerts tab and select Yours to view the alerts created in Part 1.
-
-
-Select the alert of suspicious volume of deleted accounts.
-
-
-Select Open in Search.
-
-
-Change the source from windows_server_logs.csv to "source="windows_server_attack_logs.csv.
-
-
-
-
-
-
-
-
+4. Change the source from `windows_server_logs.csv` to `source="windows_server_attack_logs.csv"`.
 
 Review the updated results and answer the following question:
-Did you detect a suspicious volume of deleted accounts?
 
+- Did you detect a suspicious volume of deleted accounts?
 
-Now you will set up a dashboard and analyze the results.
-	Did you detect a suspicious volume of deleted accounts?
-There were no signs of suspicious volumes of deleted accounts.
-Dashboard Setup
-Access the Windows Server Monitoring dashboard.
+    - There were no signs of suspicious volumes of deleted accounts.
 
+Now you will set up a dashboard and analyze the results.	
 
-Select Edit.
+#### Dashboard Setup
 
+1. Access the **Windows Server Monitoring** dashboard.
 
-Access each panel you created and complete the following:
+   - Select **Edit**.
 
+2. Access each panel you created and complete the following:
 
-Select Edit Search.
+   - Select **Edit Search**.
 
+   - Change the source from: `windows_server_logs.csv` to `source="windows_server_attack_logs.csv"`.
 
-Change the source from: windows_server_logs.csv to source="windows_server_attack_logs.csv.
+   - Select Apply.
 
+   - Save the dashboard.
 
-Select Apply.
+   - Edit the time on the dashboard to be All Time.
 
+#### Dashboard Analysis for Time Chart of Signatures
 
-Save the dashboard.
-
-
-Edit the time on the dashboard to be All Time.
-Dashboard Analysis for Time Chart of Signatures
 Analyze your new dashboard results and answer the following questions:
 
+- Does anything stand out as suspicious?
 
+   - There was suspicious activity with the signature “An account was locked out” from 12:00 a.m. to 3:00 a.m. on Wednesday, March 25th and with the signature “An attempt was made to reset an accounts password” from 8:00 a.m. to 11:00 a.m. on Wednesday, March 25th. 
 
+- Which signatures stand out?
 
-Does anything stand out as suspicious?
+   - “A user account was locked out” signature stands out for suspicious activity.
+   - “An attempt was made to reset an accounts password” signature stands out for suspicious activity.
 
+- What time did it begin/stop for each signature?
 
-There was suspicious activity with the signature “An account was locked out” from 12:00 a.m. to 3:00 a.m. on Wednesday, March 25th and with the signature “An attempt was made to reset an accounts password” from 8:00 a.m. to 11:00 a.m. on Wednesday, March 25th. 
+   - A user account was locked out: Started at 12:00 a.m. on Wednesday, March 25th and stopped at 3:00 a.m. on Wednesday, March 25th.
+   - An attempt was made to reset an accounts password: Started at 8:00 a.m on Wednesday, March 25th and stopped at 11:00 a.m. on Wednesday, March 25th.
 
+- What is the peak count of the different signatures?
 
-Which signatures stand out?
+   - A user account was locked out: Peak count during the attack was at 896.
+   - An attempt was made to reset an accounts password: Peak count  during the attack was at 1,258.
 
+#### Dashboard Analysis for Time Chart of Users
 
-“A user account was locked out” signature stands out for suspicious activity.
-“An attempt was made to reset an accounts password” signature stands out for suspicious activity.
-
-
-What time did it begin/stop for each signature?
-
-
-A user account was locked out: Started at 12:00 a.m. on Wednesday, March 25th and stopped at 3:00 a.m. on Wednesday, March 25th.
-An attempt was made to reset an accounts password: Started at 8:00 a.m on Wednesday, March 25th and stopped at 11:00 a.m. on Wednesday, March 25th.
-
-
-What is the peak count of the different signatures?
-
-
-A user account was locked out: Peak count during the attack was at 896.
-An attempt was made to reset an accounts password: Peak count  during the attack was at 1,258.
-Dashboard Analysis for Time Chart of Users
 Analyze your new dashboard results and answer the following questions:
 
+- Does anything stand out as suspicious? 
 
+    - There was suspicious activity at 12:00 a.m. and 3:00 a.m. on Wednesday, March 25th and at 9:00 a.m. and 10 a.m. on Wednesday, March 25th. 
 
+- Which users stand out?
 
-Does anything stand out as suspicious? 
+    - user_a and user_k stand out for suspicious activity.
 
+- What time did it begin and stop for each user?
 
-There was suspicious activity at 12:00 a.m. and 3:00 a.m. on Wednesday, March 25th and at 9:00 a.m. and 10 a.m. on Wednesday, March 25th. 
+    - user_a: Started at 12:00 a.m. on Wednesday, March 25th and stopped at 3:00 a.m. on Wednesday, March 25th.
+    - user_k: Started at 8:00 a.m on Wednesday, March 25th and stopped at 11:00 a.m. on Wednesday, March 25th.
 
+- What is the peak count of the different users?
 
-Which users stand out?
+    - user_a: Peak count was at 984.
+    - user_k: Peak count was at 1,256.
 
+#### Dashboard Analysis for Signatures with Bar, Graph, and Pie Charts
 
-user_a and user_k stand out for suspicious activity.
-
-
-
-What time did it begin and stop for each user?
-
-
-user_a: Started at 12:00 a.m. on Wednesday, March 25th and stopped at 3:00 a.m. on Wednesday, March 25th.
-user_k: Started at 8:00 a.m on Wednesday, March 25th and stopped at 11:00 a.m. on Wednesday, March 25th.
-
-
-What is the peak count of the different users?
-
-
-user_a: Peak count was at 984.
-user_k: Peak count was at 1,256.
-Dashboard Analysis for Signatures with Bar, Graph, and Pie Charts
 Analyze your new dashboard results and answer the following questions:
 
+- Does anything stand out as suspicious?
 
+    - There was suspicious activity starting at 12:00 a.m. and 3:00 a.m. on Wednesday, March 25th and at 8:00 a.m. and 11 a.m. on Wednesday, March 25th. 
 
+- Which signatures stand out?
 
+    - “A user account was locked out” signature stands out for suspicious activity.
+    - “An attempt was made to reset an accounts password” signature stands out for suspicious activity.
 
-Does anything stand out as suspicious?
+- What time did it begin/stop for each signature?
 
+    - A user account was locked out: Started at 12:00 a.m. on Wednesday, March 25th and stopped at 3:00 a.m. on Wednesday, March 25th.
+    - An attempt was made to reset an accounts password: Started at 8:00 a.m on Wednesday, March 25th and stopped at 11:00 a.m. on Wednesday, March 25th.
 
-There was suspicious activity starting at 12:00 a.m. and 3:00 a.m. on Wednesday, March 25th and at 8:00 a.m. and 11 a.m. on Wednesday, March 25th. 
+- What is the peak count of the different signatures?
 
+    - A user account was locked out: Peak count was at 896.
+    - An attempt was made to reset an accounts password: Peak count was at 1,258.
 
-Which signatures stand out?
+- Do the results match your findings in your time chart for signatures?
 
+    - Yes, the results were synonymous with the findings.
 
-“A user account was locked out” signature stands out for suspicious activity.
-“An attempt was made to reset an accounts password” signature stands out for suspicious activity.
+#### Dashboard Analysis for Users with Bar, Graph, and Pie Charts
 
-
-What time did it begin/stop for each signature?
-
-
-A user account was locked out: Started at 12:00 a.m. on Wednesday, March 25th and stopped at 3:00 a.m. on Wednesday, March 25th.
-An attempt was made to reset an accounts password: Started at 8:00 a.m on Wednesday, March 25th and stopped at 11:00 a.m. on Wednesday, March 25th.
-
-
-
-What is the peak count of the different signatures?
-
-
-A user account was locked out: Peak count was at 896.
-An attempt was made to reset an accounts password: Peak count was at 1,258.
-
-
-Do the results match your findings in your time chart for signatures?
-
-
-Yes, the results were synonymous with the findings.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Dashboard Analysis for Users with Bar, Graph, and Pie Charts
 Analyze your new dashboard results, and answer the following questions:
 
+- Does anything stand out as suspicious? 
 
+    - There was suspicious activity at 12:00 a.m. and 3:00 a.m. on Wednesday, March 25th and at 9:00 a.m. and 10 a.m. on Wednesday, March 25th. 
 
+- Which users stand out?
 
-Does anything stand out as suspicious? 
+    - user_a and user_k stand out for suspicious activity.
 
+- What time did it begin and stop for each user?
 
-There was suspicious activity at 12:00 a.m. and 3:00 a.m. on Wednesday, March 25th and at 9:00 a.m. and 10 a.m. on Wednesday, March 25th. 
+    - user_a: Started at 12:00 a.m. on Wednesday, March 25th and stopped at 3:00 a.m. on Wednesday, March 25th.
+    - user_k: Started at 8:00 a.m on Wednesday, March 25th and stopped at 11:00 a.m. on Wednesday, March 25th.
 
+- What is the peak count of the different users?
 
-Which users stand out?
+    - user_a: Peak count was at 984.
+    - user_k: Peak count was at 1,256.
 
+- Do the results match your findings in your time chart for users?
 
-user_a and user_k stand out for suspicious activity.
+    - Yes, the results were synonymous with the findings.
 
-
-
-What time did it begin and stop for each user?
-
-
-user_a: Started at 12:00 a.m. on Wednesday, March 25th and stopped at 3:00 a.m. on Wednesday, March 25th.
-user_k: Started at 8:00 a.m on Wednesday, March 25th and stopped at 11:00 a.m. on Wednesday, March 25th.
-
-
-What is the peak count of the different users?
-
-
-user_a: Peak count was at 984.
-user_k: Peak count was at 1,256.
-
-
-Do the results match your findings in your time chart for users?
-
-
-Yes, the results were synonymous with the findings.
-Dashboard Analysis for Users with Statistical Charts
-
-
-
+#### Dashboard Analysis for Users with Statistical Charts
 
 Analyze your new dashboard results, and answer the following question:
-What are the advantages and disadvantages of using this report, compared to the other user panels you created?
+
+- What are the advantages and disadvantages of using this report, compared to the other user panels you created?
+
+    - An advantage of a statistical chart is a concise list of the top users accused of suspicious activity. A disadvantage of the statistical chart is that it shows a cumulative perspective of data while other approaches to data representation show a shorter, more specific perspective of data.
 
 
-An advantage of a statistical chart is a concise list of the top users accused of suspicious activity. A disadvantage of the statistical chart is that it shows a cumulative perspective of data while other approaches to data representation show a shorter, more specific perspective of data.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Apache WebServer Logs
+### Apache WebServer Logs
 Load the logs in your Splunk environment.
 Select all default options provided.
 Important: For the time range, always select All Time.
