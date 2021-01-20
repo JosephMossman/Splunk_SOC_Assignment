@@ -76,8 +76,10 @@ You've been provided the following logs:
            - Create an alert to trigger when the threshold has been reached.
            - The alert should trigger an email to SOC@VSI-company.com.
 
+
            - Baseline for failed hourly attempts: 6. 
            - Threshold for failed hourly attempts: 15.
+
 
          `source="windows_server_logs.csv" status=failure`
  
@@ -88,8 +90,10 @@ You've been provided the following logs:
            - Create an alert to trigger when the threshold has been reached.
            - The alert should trigger an email to SOC@VSI-company.com.
 
+
            - Baseline for hourly success of logged on accounts: 12.
            - Threshold for hourly success of logged on accounts: 30.
+
 
          `source="windows_server_logs.csv" signature="An account was successfully logged on"`
 
@@ -101,8 +105,10 @@ You've been provided the following logs:
            - Create an alert to trigger when the threshold has been reached.
            - The alert should trigger an email to SOC@VSI-company.com.
 
+
            - Baseline for hourly deleted user accounts: 13.
            - Threshold for hourly deleted user accounts: 50.
+
 
          `source="windows_server_logs.csv" signature_id=4726`
 
