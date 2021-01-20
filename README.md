@@ -50,6 +50,7 @@ You've been provided the following logs:
              **Hint**: Research how to remove the duplicate values in your SPL search.
 
        - `source="windows_server_logs.csv" | table signature signature_id | dedup signature`
+
          ![sig_sigid](Screenshots/part1_win/sig_sigid_report.png)
 
        - A report that provides the count and percent of the severity.
@@ -57,15 +58,17 @@ You've been provided the following logs:
            - This will allow VSI to quickly know the severity levels of the Windows logs being viewed.
 
        - `source="windows_server_logs.csv" | top severity`
+
          ![severity](Screenshots/part1_win/severity_report.png)
 
        - A report that provides a comparison between the success and failure of Windows activities.
 
            - This will show VSI if there is a suspicious level of failed activities on their server.
 
-             **Hint**: Check the 'status' field for this information.
+             **Hint**: Check the `status` field for this information.
 
-       - `source="windows_server_logs.csv" status=failure` 
+       - `source="windows_server_logs.csv" status=failure`
+ 
          ![sucess_failure](Screenshots/part1_win/success_failure_report.png)
 
    - **Alerts**: Design the following alerts to notify VSI of suspicious activity:
@@ -78,7 +81,8 @@ You've been provided the following logs:
            - Baseline for failed hourly attempts: 6. 
            - Threshold for failed hourly attempts: 15.
 
-       - `source="windows_server_logs.csv" status=failure` 
+       - `source="windows_server_logs.csv" status=failure`
+ 
          ![sus_activity](Screenshots/part1_win/sus_activty_alert_final.png)
 
        - Determine a baseline and threshold for hourly count of the signature: an account was successfully logged on.
@@ -90,6 +94,7 @@ You've been provided the following logs:
            - Threshold for hourly success of logged on accounts: 30.
 
        - `source="windows_server_logs.csv" signature="An account was successfully logged on"`
+
        - ![success](Screenshots/part1_win/success_alert_final.png)
 
        - Determine a baseline and threshold for hourly count of the signature: a user account was deleted.
@@ -102,15 +107,16 @@ You've been provided the following logs:
            - Threshold for hourly deleted user accounts: 50.
 
        - `source="windows_server_logs.csv" signature_id=4726`
+
        - ![deleted](Screenshots/part1_win/deleted_account_alert_final.png)
 
    - **Visualizations and Dashboards**: Design the following visualizations and add them to a dashboard called Windows Server Monitoring:
 
-       - A line chart that displays the different 'signature' field values over time.
+       - A line chart that displays the different `signature` field values over time.
 
-         **Hint**: Add the following after your search: 'timechart span=1h count by signature'.
+         **Hint**: Add the following after your search: `timechart span=1h count by signature`.
 
-       - A line chart that displays the different 'user' field values over time.
+       - A line chart that displays the different `user` field values over time.
 
        - A bar, column, or pie chart that illustrates the count of different signatures.
 
