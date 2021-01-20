@@ -110,7 +110,7 @@ You've been provided the following logs:
 
    - **Visualizations and Dashboards**: Design the following visualizations and add them to a dashboard called Windows Server Monitoring:
 
-         **Hint**: Add the following after your search: `timechart span=1h count by signature`.
+       **Hint**: Add the following after your search: `timechart span=1h count by signature`.
 
        - A line chart that displays the different `signature` field values over time.
 
@@ -126,19 +126,19 @@ You've been provided the following logs:
 
        - A bar, column, or pie chart that illustrates the count of different signatures.
 
-         `source="windows_server_logs.csv" | top limit=10 signature | timechart span=1h count by signature`
+         `source="windows_server_logs.csv" | top limit=10 signature`
 
          ![sig_bar](Screenshots/part1_win/sig_bar_chart.png)
 
        - A bar, column, or pie chart that illustrates the count of different users.
 
-         `source="windows_server_logs.csv" | top limit=10 user | timechart span=1h count by user`
+         `source="windows_server_logs.csv" | top limit=10 user`
 
          ![user_bar](Screenshots/part1_win/user_bar_chart.png)
 
        - A statistical chart that illustrates the count of different users.
 
-         `source="windows_server_logs.csv" | top limit=10 user | timechart span=1h count by user`
+         `source="windows_server_logs.csv" | top limit=10 user`
 
          ![user_stat](Screenshots/part1_win/user_stat_chart.png)
 
@@ -157,105 +157,122 @@ You've been provided the following logs:
    - Align your dashboard panels as you see fit.
 
 
-###Apache Web Server Instructions and Deliverables
+### Apache Web Server Instructions and Deliverables
 
-- Load the logs into your Splunk environment.
+1. Load the logs into your Splunk environment.
 
-Select all default options provided.
-Important: For the time range, select All Time.
+   - Select all default options provided.
+   - **Important**: For the time range, select **All Time**.
+
+2. Analyze the logs and the available fields.
+
+3. Design the following deliverables to protect VSI from potential attacks by JobeCorp:
+
+   - **Reports**: Design the following reports to assist VSI with quickly identifying specific information:
+
+       - A report that shows a table of the different HTTP methods (GET, POST, HEAD, etc).
+
+           - This will provide insight into the type of HTTP activity being requested against their web server.
+
+           ` `source="apache_logs.txt" | top method`
+
+           ![method](Screenshots/part1_apache/http_methods_report.png)
+
+       - A report that shows the top 10 domains that referred to VSI's website.
+
+           - This will assist VSI with identifying suspicious referrers.
+
+           ` `source="apache_logs.txt" | top limit=10 referer_domain`
+
+           ![reffered](Screenshots/part1_apache/referred_top_10_report.png)
+
+       - A report that shows the count of the HTTP response codes.
+
+           - This will provide insight into any suspicious levels of HTTP responses.
+
+           ` `source="apache_logs.txt" | top status`
+
+           ![reponse](Screenshots/part1_apache/reponse_codes_report.png)
+
+   - **Alerts**: Design the following alerts:
+
+       - Determine a baseline and threshold for hourly activity from a country other than the United States.
+
+           - Create an alert to trigger when the threshold has been reached.
+           - The alert should trigger an email to SOC@VSI-company.com.
+
+           - Baseline for hourly activity is 80
+           - Threshold for hourly activity is 170
+
+           ` `source="apache_logs.txt" | iplocation clientip | where Country!="United States"`
+
+           ![iplocation](Screenshots/part1_apache/iplocation_alert_final.png)
+
+       - Determine an appropriate baseline and threshold for hourly count of the HTTP POST method.
+
+           - Create an alert to trigger when the threshold has been reached.
+           - The alert should trigger an email to SOC@VSI-company.com.
+
+           - Baseline for hourly count of HTTP POST method is 2
+           - Threshold for hourly count of HTTP POST method is 12
+
+           ` `source="apache_logs.txt" method=POST`
+
+           ![http_post](Screenshots/part1_apache/http_post_alert_final.png)
+
+   - **Visualizations and Dashboards**: Design the following visualizations and add them to a dashboard called Apache WebServer Monitoring.
+
+       ** Hint**: Add the following after your search: timechart span=1h count by method.
+
+       - A line chart that displays the different HTTP methods field over time.
+
+           `source="apache_logs.txt" | timechart span=1h count by method`
+
+           ![method](Screenshots/part1_apache/http_methods_line_chart.png)
+
+       - A cluster map showing the locations based on the clientip field.
+
+           `source="apache_logs.txt" | iplocation clientip | geostats count`
+
+           ![iplocation](Screenshots/part1_apache/iplocation_cluster.png)
+
+       - A bar, column, or pie chart that displays the number of different URIs.
+
+           `source="apache_logs.txt" | top limit=10 uri`
+
+           ![uri](Screenshots/part1_apache/different_uri_bar_chart.png)
+
+       - A bar, column, or pie chart that displays the counts of the top 10 countries.
+
+           `source="apache_logs.txt" | iplocation clientip | top limit=10 Country`
+
+           ![countries](Screenshots/part1_apache/countries_column_chart.png)
+
+       - A statistical chart that illustrates the count of different user agents.
+
+           `source="apache_logs.txt" | top limit=10 useragent`
+
+           ![user_agent](Screenshots/part1_apache/user_agent_stat_chart.png)
+
+       - One single value visualization of your choice: radial gauge, marker gauge, etc.
+
+           `source="apache_logs.txt" status=200 | timechart span=1h count by status`
+
+           ![success](Screenshots/part1_apache/http_success_chart.png)
+
+4. On your dashboard, add the ability to change the time range for all your visualizations:
+
+   - Be sure to title all your panels appropriately.
+   - Align your dashboard panels as you see fit.
+
+       ![dashtime](Screenshots/part1_apache/time_dashboard.png)
 
 
-Analyze the logs and the available fields.
+## Activity File: Part 2 - Defend Your SOC
 
+- VSI recently experienced several cyberattacks, likely from their adversary JobeCorp.
 
-Design the following deliverables to protect VSI from potential attacks by JobeCorp:
-
-
-Reports: Design the following reports to assist VSI with quickly identifying specific information:
-
-
-A report that shows a table of the different HTTP methods (GET, POST, HEAD, etc).
-
-
-This will provide insight into the type of HTTP activity being requested against their web server.
-
-
-
-
-
-
-
-
-A report that shows the top 10 domains that referred to VSI's website.
-
-
-This will assist VSI with identifying suspicious referrers.
-
-A report that shows the count of the HTTP response codes.
-
-
-This will provide insight into any suspicious levels of HTTP responses.
-
-
-Alerts: Design the following alerts:
-
-
-Determine a baseline and threshold for hourly activity from a country other than the United States.
-
-
-Create an alert to trigger when the threshold has been reached.
-The alert should trigger an email to SOC@VSI-company.com.
-
-
-Baseline for hourly activity is 80
-Threshold for hourly activity is 170
-
-Determine an appropriate baseline and threshold for hourly count of the HTTP POST method.
-
-
-Create an alert to trigger when the threshold has been reached.
-The alert should trigger an email to SOC@VSI-company.com.
-
-
-Baseline for hourly count of HTTP POST method is 2
-Threshold for hourly count of HTTP POST method is 12
-
-
-
-
-
-
-Visualizations and Dashboards: Design the following visualizations and add them to a dashboard called Apache WebServer Monitoring.
-
-
-A line chart that displays the different HTTP methods field over time.
-
-
-Hint: Add the following after your search: timechart span=1h count by method.
-
-A cluster map showing the locations based on the clientip field.
-
-A bar, column, or pie chart that displays the number of different URIs.
-
-
-A bar, column, or pie chart that displays the counts of the top 10 countries.
-
-A statistical chart that illustrates the count of different user agents.
-
-One single value visualization of your choice: radial gauge, marker gauge, etc.
-
-On your dashboard, add the ability to change the time range for all your visualizations:
-
-
-Be sure to title all your panels appropriately.
-Align your dashboard panels as you see fit.
-
-Activity File: Part 2 - Defend Your SOC
-VSI recently experienced several cyberattacks, likely from their adversary JobeCorp.
-
-
-Fortunately, your SOC team had set up several monitoring solutions to help VSI quickly identify what was attacked.
-
+- Fortunately, your SOC team had set up several monitoring solutions to help VSI quickly identify what was attacked.
 
 These monitoring solutions will also help VSI create mitigation strategies to protect the organization.
 You have been provided two logs files of suspicious activity:
