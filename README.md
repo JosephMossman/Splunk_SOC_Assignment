@@ -76,10 +76,8 @@ You've been provided the following logs:
            - Create an alert to trigger when the threshold has been reached.
            - The alert should trigger an email to SOC@VSI-company.com.
 
-
-           - Baseline for failed hourly attempts: 6. 
-           - Threshold for failed hourly attempts: 15.
-
+           > Baseline for failed hourly attempts: 6. 
+           > Threshold for failed hourly attempts: 15.
 
          `source="windows_server_logs.csv" status=failure`
  
@@ -90,10 +88,8 @@ You've been provided the following logs:
            - Create an alert to trigger when the threshold has been reached.
            - The alert should trigger an email to SOC@VSI-company.com.
 
-
-           - Baseline for hourly success of logged on accounts: 12.
-           - Threshold for hourly success of logged on accounts: 30.
-
+           > Baseline for hourly success of logged on accounts: 12.
+           > Threshold for hourly success of logged on accounts: 30.
 
          `source="windows_server_logs.csv" signature="An account was successfully logged on"`
 
@@ -105,10 +101,8 @@ You've been provided the following logs:
            - Create an alert to trigger when the threshold has been reached.
            - The alert should trigger an email to SOC@VSI-company.com.
 
-
-           - Baseline for hourly deleted user accounts: 13.
-           - Threshold for hourly deleted user accounts: 50.
-
+           > Baseline for hourly deleted user accounts: 13.
+           > Threshold for hourly deleted user accounts: 50.
 
          `source="windows_server_logs.csv" signature_id=4726`
 
@@ -138,7 +132,7 @@ You've been provided the following logs:
 
        - A bar, column, or pie chart that illustrates the count of different users.
 
-         `source="windows_server_logs.csv" | top limit=10 user | timechart span=1h count by user'
+         `source="windows_server_logs.csv" | top limit=10 user | timechart span=1h count by user`
 
          ![user_bar](Screenshots/part1_win/user_bar_chart.png)
 
@@ -156,7 +150,7 @@ You've been provided the following logs:
 
 4. On your dashboard, add the ability to change the time range for all your visualizations.
 
-         ![timerange](Screenshots/part1_win/dashboard_time_range.png)
+   ![timerange](Screenshots/part1_win/dashboard_time_range.png)
 
    - Be sure to title all your panels appropriately.
 
