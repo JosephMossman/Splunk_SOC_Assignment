@@ -530,8 +530,21 @@ Analyze your new dashboard results and answer the following questions:
 
 Analyze your new dashboard results and answer the following questions:
 
+ `source="windows_server_logs.csv” user=user_a | timechart span=1h count by user`
 
+ ![usera_win](Screenshots/part2_win/win_line_usera_user.png)
 
+ `source="windows_server_attack_logs.csv” user=user_a | timechart span=1h count by user`
+
+ ![usera_winatk](Screenshots/part2_win/winatk_line_usera_user.png)
+
+ `source="windows_server_logs.csv” user=user_k | timechart span=1h count by user`
+
+ ![userk_win](Screenshots/part2_win/win_line_userk_user.png)
+
+ `source="windows_server_attack_logs.csv” user=user_k | timechart span=1h count by user`
+
+ ![userk_winatk](Screenshots/part2_win/winatk_line_userk_user.png)
 
 - Does anything stand out as suspicious? 
 
@@ -554,6 +567,22 @@ Analyze your new dashboard results and answer the following questions:
 #### Dashboard Analysis for Signatures with Bar, Graph, and Pie Charts
 
 Analyze your new dashboard results and answer the following questions:
+
+ `source="windows_server_logs.csv” signature="A user account was locked out" | timechart span=1h count by signature`
+
+ ![lockedout_win](Screenshots/part2_win/win_bar_lockedout_sig.png)
+
+ `source="windows_server_attack_logs.csv” signature="A user account was locked out" | timechart span=1h count by signature`
+
+ ![lockedout_winatk](Screenshots/part2_win/winatk_bar_lockedout_sig.png)
+
+ `source="windows_server_logs.csv” signature="An attempt was made to reset an accounts password" | timechart span=1h count by signature`
+
+ ![accountpw_win](Screenshots/part2_win/win_bar_accountpw_sig.png)
+
+ `source="windows_server_attack_logs.csv” signature="An attempt was made to reset an accounts password" | timechart span=1h count by signature`
+
+ ![accountpw_winatk](Screenshots/part2_win/winatk_bar_accountpw_sig.png)
 
 - Does anything stand out as suspicious?
 
@@ -582,6 +611,22 @@ Analyze your new dashboard results and answer the following questions:
 
 Analyze your new dashboard results, and answer the following questions:
 
+ `source="windows_server_logs.csv” user=user_a | timechart span=1h count by user`
+
+ ![usera_win](Screenshots/part2_win/win_bar_usera_user.png)
+
+ `source="windows_server_attack_logs.csv” user=user_a | timechart span=1h count by user`
+
+ ![usera_winatk](Screenshots/part2_win/winatk_bar_usera_user.png)
+
+ `source="windows_server_logs.csv” user=user_k | timechart span=1h count by user`
+
+ ![userk_win](Screenshots/part2_win/win_bar_userk_user.png)
+
+ `source="windows_server_attack_logs.csv” user=user_k | timechart span=1h count by user`
+
+ ![userk_winatk](Screenshots/part2_win/winatk_bar_userk_user.png)
+
 - Does anything stand out as suspicious? 
 
     - There was suspicious activity at 12:00 a.m. and 3:00 a.m. on Wednesday, March 25th and at 9:00 a.m. and 10 a.m. on Wednesday, March 25th. 
@@ -607,6 +652,14 @@ Analyze your new dashboard results, and answer the following questions:
 #### Dashboard Analysis for Users with Statistical Charts
 
 Analyze your new dashboard results, and answer the following question:
+
+ `source="windows_server_logs.csv" | top limit=10 user
+
+ ![stat_win](Screenshots/part2_win/win_stat_user.png)
+
+ `source="windows_server_attack_logs.csv" | top limit=10 user
+
+ ![stat_winatk](Screenshots/part2_win/winatk_stat_user.png)
 
 - What are the advantages and disadvantages of using this report, compared to the other user panels you created?
 
