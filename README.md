@@ -316,7 +316,7 @@ Review the updated results and answer the following question:
 
  ![severity](Screenshots/part2_win/severity_winlogs.png)
 
- `source="Windows_server_attack_logs.csv" | top severity`
+ `source="windows_server_attack_logs.csv" | top severity`
 
  ![severity_atk](Screenshots/part2_win/severity_winatklogs.png)
 
@@ -756,7 +756,7 @@ Review the updated results and answer the following question:
 
  ![response](Screenshots/part2_apache/apa_report_response.png)
 
- `source="apache_attack_logs.tct" | top status`
+ `source="apache_attack_logs.txt" | top status`
 
  ![response_atk](Screenshots/part2_apache/apaatk_report_response.png)
 
@@ -866,7 +866,7 @@ Analyze your new dashboard results and answer the following questions:
 
  ![get](Screenshots/part2_apache/apa_line_get_method.png)
 
- `source="apache_attack_logs" method=GET | timechart span=1h count by method`
+ `source="apache_attack_logs.txt" method=GET | timechart span=1h count by method`
 
  ![get_atk](Screenshots/part2_apache/apaatk_line_get_method.png)
 
@@ -874,7 +874,7 @@ Analyze your new dashboard results and answer the following questions:
 
  ![post](Screenshots/part2_apache/apa_line_post_method.png)
 
- `source="apache_attack_logs" method=POST | timechart span=1h count by method`
+ `source="apache_attack_logs.txt" method=POST | timechart span=1h count by method`
 
  ![post_atk](Screenshots/part2_apache/apaatk_line_post_method.png)
 
@@ -937,7 +937,7 @@ Analyze your new cluster map results and answer the following questions:
 
 Analyze your dashboard panel of the URI data and answer the following questions:
 
- `source="apacche_logs.txt" uri="/files/logstash/logstash-1.3.2-monolithic.jar" | timechart span=1h count by uri`
+ `source="apache_logs.txt" uri="/files/logstash/logstash-1.3.2-monolithic.jar" | timechart span=1h count by uri`
 
  ![logstash](Screenshots/part2_apache/apa_column_logstash_uri.png)
 
@@ -1002,11 +1002,11 @@ Note: This is a public-facing windows server that VSI employees access.
 
        `source="windows_server_attack_logs.csv" user=user_a`
 
-       ![usera](Screenshots/part3_logs/win_usera.png)
+       ![usera_atk](Screenshots/part3_logs/win_usera.png)
 
-       `source="windows_server_attack_logs.csv" user=user_a`
+       `source="windows_server_attack_logs.csv" signature="A user account was locked out"`
 
-       ![usera_atk](Screenshots/part3_logs/winatk_usera.png)
+       ![lockedout_atk](Screenshots/part3_logs/sig_lockedout.png)
 
        - The “user_a” user was responsible for the “A user account was locked out” signature.
 
@@ -1020,11 +1020,11 @@ Note: This is a public-facing windows server that VSI employees access.
 
         `source="windows_server_attack_logs.csv" user=user_k`
 
-        ![userk](Screenshots/part3_logs/win_userk.png)
+        ![userk_atk](Screenshots/part3_logs/win_userk.png)
 
-        `source="windows_server_attack_logs.csv" user=user_k`
+        `source="windows_server_attack_logs.csv" signature="An attempt was made to reset an accounts password"`
 
-        ![userk_atk](Screenshots/part3_logs/winatk_userk.png)
+        ![accountpw_atk](Screenshots/part3_logs/sig_reset.png)
 
         - The user “user_k” was responsible for the “An attempt was made to reset an accounts password” signature.
 
