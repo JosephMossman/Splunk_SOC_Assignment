@@ -1099,13 +1099,13 @@ Note: This is a public-facing windows server that VSI employees access.
 
         ![ruby](Screenshots/part3_logs/apaatk_useragent_ruby.png)
 
-        - byte 65748: Peak count of 1,296 events.
+        - byte=65748: Peak count of 1,296 events.
 
         `source="apache_attack_logs.txt" bytes=65748`
 
         ![b65748](Screenshots/part3_logs/apaatk_bytes_65748.png)
 
-        - byte 324: Peak count of 624 events.
+        - byte=324: Peak count of 624 events.
 
         `source="apache_attack_logs.txt" bytes=324`
 
@@ -1122,6 +1122,4 @@ Note: This is a public-facing windows server that VSI employees access.
         - Block all incoming HTTP traffic from the useragent “Chef Client/10.18.2 (ruby-1.9.3-p327; ohai-6.16.0; x86_64-linux; +http://opscode.com).”
 
         - Block all incoming HTTP traffic where the bytes count is 324.
-
-
 
