@@ -1000,21 +1000,21 @@ Note: This is a public-facing windows server that VSI employees access.
 
     - user=user_a
 
-        `source="windows_server_attack_logs.csv" user=user_a`
+       `source="windows_server_attack_logs.csv" user=user_a`
 
-        ![usera](Screenshots/part3_logs/win_usera.png)
+       ![usera](Screenshots/part3_logs/win_usera.png)
 
-        `source="windows_server_attack_logs.csv" user=user_a`
+       `source="windows_server_attack_logs.csv" user=user_a`
 
-        ![usera_atk](Screenshots/part3_logs/winatk_usera.png)
+       ![usera_atk](Screenshots/part3_logs/winatk_usera.png)
 
-        - The “user_a” user was responsible for the “A user account was locked out” signature.
+       - The “user_a” user was responsible for the “A user account was locked out” signature.
 
-        - This signature indicates the attacker was trying to brute force attack into the user_a account.
+       - This signature indicates the attacker was trying to brute force attack into the user_a account.
 
-        - The password for user_a should be changed to a new, complex password to remove unintended access to this account.
+       - The password for user_a should be changed to a new, complex password to remove unintended access to this account.
 
-        - If the user_a account continues to be locked out, user_a could be changed to a different user name.
+       - If the user_a account continues to be locked out, user_a could be changed to a different user name.
 
     - user=user_k
 
@@ -1087,29 +1087,29 @@ Note: This is a public-facing windows server that VSI employees access.
 
     - VSI could look into two other fields “useragent” and “bytes” to identify the attacker.
 
-       - useragent=Mozilla/4.0: Peak count of 1,296 events.
+        - useragent=Mozilla/4.0: Peak count of 1,296 events.
 
-       `source="apache_attack_logs.txt" useragent="Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; SV1; .NET CLR 2.0.50727987787; InfoPath.1).”`
+        `source="apache_attack_logs.txt" useragent="Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; SV1; .NET CLR 2.0.50727987787; InfoPath.1).”`
 
-       ![mozilla](Screenshots/part3_logs/apaatk_useragent_mozilla.png)
+        ![mozilla](Screenshots/part3_logs/apaatk_useragent_mozilla.png)
 
-       - useragent=Chef Client/10.18.2: Peak count of 624 events. 
+        - useragent=Chef Client/10.18.2: Peak count of 624 events. 
 
-       `source="apache_attack_logs.txt" useragent="Chef Client/10.18.2 (ruby-1.9.3-p327; ohai-6.16.0; x86_64-linux; +http://opscode.com)"`
+        `source="apache_attack_logs.txt" useragent="Chef Client/10.18.2 (ruby-1.9.3-p327; ohai-6.16.0; x86_64-linux; +http://opscode.com)"`
 
-       ![ruby](Screenshots/part3_logs/apaatk_useragent_ruby.png)
+        ![ruby](Screenshots/part3_logs/apaatk_useragent_ruby.png)
 
-       - byte 65748: Peak count of 1,296 events.
+        - byte 65748: Peak count of 1,296 events.
 
-       `source="apache_attack_logs.txt" bytes=65748`
+        `source="apache_attack_logs.txt" bytes=65748`
 
-       ![b65748](Screenshots/part3_logs/apaatk_bytes_65748.png)
+        ![b65748](Screenshots/part3_logs/apaatk_bytes_65748.png)
 
-       - byte 324: Peak count of 624 events.
+        - byte 324: Peak count of 624 events.
 
-       `source="apache_attack_logs.txt" bytes=324`
+        `source="apache_attack_logs.txt" bytes=324`
 
-       ![b324](Screenshots/part3_logs/apaatk_bytes_324.png)
+        ![b324](Screenshots/part3_logs/apaatk_bytes_324.png)
 
     - Rule 1: firewall parameters designed to stop further attacks.
 
