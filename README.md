@@ -3,10 +3,7 @@
 In this activity, I played the role of a SOC analyst hired by Virutal Space Industries (VSI) tasked with using Splunk to monitor against potential attacks from JobeCorp.
 
 
-
 ## Activity File: Part 1 - Master of the SOC
-
-
 
 - Each group is playing the role of an SOC analyst at a small company called Virtual Space Industries (VSI), which designs virtual reality programs for businesses.
 
@@ -271,10 +268,7 @@ You've been provided the following logs:
    - Align your dashboard panels as you see fit.
 
 
-
 ## Activity File: Part 2 - Defend Your SOC
-
-
 
 - VSI recently experienced several cyberattacks, likely from their adversary JobeCorp.
 
@@ -972,10 +966,7 @@ Analyze your dashboard panel of the URI data and answer the following questions:
     -  Based on the URI “VSI_Logon.php” being accessed, the attacker may be trying to brute force the VSI logon page. 
 
 
-
 ## Activity File: Part 3 - Protecting VSI from Future Attacks
-
-
 
 In the previous part, you set up your SOC and monitored attacks from JobeCorp. Now, you will need to design mitigation strategies to protect VSI from future attacks.
 
@@ -1098,27 +1089,27 @@ Note: This is a public-facing windows server that VSI employees access.
 
     - useragent=Mozilla/4.0: Peak count of 1,296 events.
 
-      `source="apache_attack_logs.txt" useragent="Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; SV1; .NET CLR 2.0.50727987787; InfoPath.1).”`
+    `source="apache_attack_logs.txt" useragent="Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; SV1; .NET CLR 2.0.50727987787; InfoPath.1).”`
 
-      ![mozilla](Screenshots/part3_logs/apaatk_useragent_mozilla.png)
+    ![mozilla](Screenshots/part3_logs/apaatk_useragent_mozilla.png)
 
     - useragent=Chef Client/10.18.2: Peak count of 624 events. 
 
-      `source="apache_attack_logs.txt" useragent="Chef Client/10.18.2 (ruby-1.9.3-p327; ohai-6.16.0; x86_64-linux; +http://opscode.com)"`
+    `source="apache_attack_logs.txt" useragent="Chef Client/10.18.2 (ruby-1.9.3-p327; ohai-6.16.0; x86_64-linux; +http://opscode.com)"`
 
-      ![ruby](Screenshots/part3_logs/apaatk_useragent_ruby.png)
+    ![ruby](Screenshots/part3_logs/apaatk_useragent_ruby.png)
 
     - byte 65748: Peak count of 1,296 events.
 
-      `source="apache_attack_logs.txt" byte=65748`
+    `source="apache_attack_logs.txt" bytes=65748`
 
-      ![b65748](Screenshots/part3_logs/apaatk_byte_65748.png)
+    ![b65748](Screenshots/part3_logs/apaatk_byte_65748.png)
 
     - byte 324: Peak count of 624 events.
 
-      `source="apache_attack_logs.txt" bytes=324`
+    `source="apache_attack_logs.txt" bytes=324`
 
-      ![b324](Screenshots/part3_logs/apaatk_byte_324.png)
+    ![b324](Screenshots/part3_logs/apaatk_byte_324.png)
 
     - Rule 1: firewall parameters designed to stop further attacks.
 
@@ -1131,5 +1122,6 @@ Note: This is a public-facing windows server that VSI employees access.
         - Block all incoming HTTP traffic from the useragent “Chef Client/10.18.2 (ruby-1.9.3-p327; ohai-6.16.0; x86_64-linux; +http://opscode.com).”
 
         - Block all incoming HTTP traffic where the bytes count is 324.
+
 
 
