@@ -1074,7 +1074,7 @@ Note: This is a public-facing windows server that VSI employees access.
 
     - Provide a "plain english" description of the rule.
 
-        - **Rule**: Block all incoming HTTP traffic where the source IP comes from the country of Ukraine."
+        - Rule: Block all incoming HTTP traffic where the source IP comes from the country of Ukraine."
 
 #### Question 2
 
