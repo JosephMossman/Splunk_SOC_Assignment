@@ -1048,7 +1048,7 @@ Note: This is a public-facing windows server that VSI employees access.
 
     `source="windows_server_attack_logs.csv" signature="A user account was locked out"`
 
-    ![lockedout](Screenshots/par3_logs/lockedout_alert.png)
+    ![lockedout](Screenshots/part3_logs/lockedout_alert.png)
 
     - Lowering the alert thresholds of accounts becoming locked out.
 
@@ -1122,4 +1122,5 @@ Note: This is a public-facing windows server that VSI employees access.
         - Block all incoming HTTP traffic from the useragent “Chef Client/10.18.2 (ruby-1.9.3-p327; ohai-6.16.0; x86_64-linux; +http://opscode.com).”
 
         - Block all incoming HTTP traffic where the bytes count is 324.
+
 
