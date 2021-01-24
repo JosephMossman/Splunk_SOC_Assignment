@@ -1000,37 +1000,37 @@ Note: This is a public-facing windows server that VSI employees access.
 
     - user=user_a
 
-    `source="windows_server_attack_logs.csv" user=user_a`
+        `source="windows_server_attack_logs.csv" user=user_a`
 
-    ![usera](Screenshots/part3_logs/win_usera.png)
+        ![usera](Screenshots/part3_logs/win_usera.png)
 
-    `source="windows_server_attack_logs.csv" user=user_a`
+        `source="windows_server_attack_logs.csv" user=user_a`
 
-    ![usera_atk](Screenshots/part3_logs/winatk_usera.png)
+        ![usera_atk](Screenshots/part3_logs/winatk_usera.png)
 
-    - The “user_a” user was responsible for the “A user account was locked out” signature.
+        - The “user_a” user was responsible for the “A user account was locked out” signature.
 
-    - This signature indicates the attacker was trying to brute force attack into the user_a account.
+        - This signature indicates the attacker was trying to brute force attack into the user_a account.
 
-    - The password for user_a should be changed to a new, complex password to remove unintended access to this account.
+        - The password for user_a should be changed to a new, complex password to remove unintended access to this account.
 
-    - If the user_a account continues to be locked out, user_a could be changed to a different user name.
+        - If the user_a account continues to be locked out, user_a could be changed to a different user name.
 
     - user=user_k
 
-    `source="windows_server_attack_logs.csv" user=user_k`
+        `source="windows_server_attack_logs.csv" user=user_k`
 
-    ![userk](Screenshots/part3_logs/win_userk.png)
+        ![userk](Screenshots/part3_logs/win_userk.png)
 
-    `source="windows_server_attack_logs.csv" user=user_k`
+        `source="windows_server_attack_logs.csv" user=user_k`
 
-    ![userk_atk](Screenshots/part3_logs/winatk_userk.png)
+        ![userk_atk](Screenshots/part3_logs/winatk_userk.png)
 
-    - The user “user_k” was responsible for the “An attempt was made to reset an accounts password” signature.
+        - The user “user_k” was responsible for the “An attempt was made to reset an accounts password” signature.
 
-    - There was no evidence of success by the attacker of resetting the password to gain access into the account.
+        - There was no evidence of success by the attacker of resetting the password to gain access into the account.
 
-    - The alert thresholds for the user_k account should be edited with lower alert threshold settings as a mitigation solution for future attacks.
+        - The alert thresholds for the user_k account should be edited with lower alert threshold settings as a mitigation solution for future attacks.
 
 - Based on the attack signatures, what mitigations would you recommend to protect each user account? Provide global mitigations that the whole company can use and individual mitigations that are specific to each user.
 
