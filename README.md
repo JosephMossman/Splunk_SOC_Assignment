@@ -6,6 +6,8 @@ In this activity, I played the role of a SOC analyst hired by Virutal Space Indu
 
 ## Activity File: Part 1 - Master of the SOC
 
+
+
 - Each group is playing the role of an SOC analyst at a small company called Virtual Space Industries (VSI), which designs virtual reality programs for businesses.
 
 - VSI has heard rumors that a competitor, JobeCorp, may be launching cyberattacks to disrupt VSI's business.
@@ -271,6 +273,8 @@ You've been provided the following logs:
 
 
 ## Activity File: Part 2 - Defend Your SOC
+
+
 
 - VSI recently experienced several cyberattacks, likely from their adversary JobeCorp.
 
@@ -968,17 +972,20 @@ Analyze your dashboard panel of the URI data and answer the following questions:
     -  Based on the URI “VSI_Logon.php” being accessed, the attacker may be trying to brute force the VSI logon page. 
 
 
+
 ## Activity File: Part 3 - Protecting VSI from Future Attacks
+
+
 
 In the previous part, you set up your SOC and monitored attacks from JobeCorp. Now, you will need to design mitigation strategies to protect VSI from future attacks.
 
 You are tasked with using your findings from the Master of SOC activity to answer questions about mitigation strategies.
 
-System
+**System**
 
 You will be using the Splunk app located in the Ubuntu VM.
 
-Logs
+**Logs**
 
 Use the same log files from the previous parts:
 
