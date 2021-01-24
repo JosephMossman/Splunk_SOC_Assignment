@@ -83,7 +83,7 @@ You've been provided the following logs:
  
          ![sus_activity](Screenshots/part1_win/sus_activity_alert_final.png)
 
-       - Determine a baseline and threshold for hourly count of the signature: an account was successfully logged on.
+       - Determine a baseline and threshold for hourly count of the signature: **an account was successfully logged on**.
 
            - Create an alert to trigger when the threshold has been reached.
            - The alert should trigger an email to SOC@VSI-company.com.
@@ -95,7 +95,7 @@ You've been provided the following logs:
 
          ![success](Screenshots/part1_win/success_alert_final.png)
 
-       - Determine a baseline and threshold for hourly count of the signature: a user account was deleted.
+       - Determine a baseline and threshold for hourly count of the signature: **a user account was deleted**.
 
            - Design the alert based on the corresponding SignatureID, as the signature name sometimes changes when the Windows system updates.
            - Create an alert to trigger when the threshold has been reached.
@@ -128,19 +128,19 @@ You've been provided the following logs:
 
          `source="windows_server_logs.csv" | top limit=10 signature`
 
-         ![sig_bar](Screenshots/part1_win/sig_bar_chart.png)
+         ![sig_bar](Screenshots/part1_win/sig_column_chart.png)
 
        - A bar, column, or pie chart that illustrates the count of different users.
 
          `source="windows_server_logs.csv" | top limit=10 user`
 
-         ![user_bar](Screenshots/part1_win/user_bar_chart.png)
+         ![user_bar](Screenshots/part1_win/user_column_chart.png)
 
        - A statistical chart that illustrates the count of different users.
 
          `source="windows_server_logs.csv" | top limit=10 user`
 
-         ![user_stat](Screenshots/part1_win/user_stat_chart.png)
+         ![user_stat](Screenshots/part1_win/user_stat_chart_10.png)
 
        - One single value visualization of your choice: radial gauge, marker gauge, etc.
 
@@ -240,13 +240,13 @@ You've been provided the following logs:
 
            `source="apache_logs.txt" | top limit=10 uri`
 
-           ![uri](Screenshots/part1_apache/different_uri_bar_chart.png)
+           ![uri](Screenshots/part1_apache/different_uri_column_chart.png)
 
        - A bar, column, or pie chart that displays the counts of the top 10 countries.
 
            `source="apache_logs.txt" | iplocation clientip | top limit=10 Country`
 
-           ![countries](Screenshots/part1_apache/countries_column_chart.png)
+           ![countries](Screenshots/part1_apache/countries_bar_chart.png)
 
        - A statistical chart that illustrates the count of different user agents.
 
@@ -278,13 +278,14 @@ You've been provided the following logs:
 
 You have been provided two logs files of suspicious activity:
 
-- One for a Windows server.
+- One for a Windows Server.
 
    - [Windows Server Attack Logs](Resources/windows_server_attack_logs.csv)
 
-- One for an Apache web server.
+- One for an Apache Web Server.
 
    - [Apache Attack Logs](Resources/apache_attack_logs.txt)
+
 
 ### Windows Server Logs
 
@@ -307,7 +308,7 @@ Now you will review the reports you created in Part 1 and analyze the results.
 
 4. Take note of the percentages of different severities.
 
-5. Change the source from `windows_server_logs.csv` to `source="windows_server_attack_logs.csv"`.
+5. Change the source from `source="windows_server_logs.csv"` to source="windows_server_attack_logs.csv"`.
 
 6. Select **Save**.
 
@@ -481,11 +482,11 @@ Now you will set up a dashboard and analyze the results.
 
    - Change the source from: `windows_server_logs.csv` to `source="windows_server_attack_logs.csv"`.
 
-   - Select Apply.
+   - Select **Apply**.
 
    - Save the dashboard.
 
-   - Edit the time on the dashboard to be All Time.
+   - Edit the time on the dashboard to be **All Time**.
 
 #### Dashboard Analysis for Time Chart of Signatures
 
@@ -653,11 +654,11 @@ Analyze your new dashboard results, and answer the following questions:
 
 Analyze your new dashboard results, and answer the following question:
 
- `source="windows_server_logs.csv" | top limit=10 user
+ `source="windows_server_logs.csv" | top limit=10 user`
 
  ![stat_win](Screenshots/part2_win/win_stat_user.png)
 
- `source="windows_server_attack_logs.csv" | top limit=10 user
+ `source="windows_server_attack_logs.csv" | top limit=10 user`
 
  ![stat_winatk](Screenshots/part2_win/winatk_stat_user.png)
 
@@ -666,165 +667,181 @@ Analyze your new dashboard results, and answer the following question:
     - An advantage of a statistical chart is a concise list of the top users accused of suspicious activity. A disadvantage of the statistical chart is that it shows a cumulative perspective of data while other approaches to data representation show a shorter, more specific perspective of data.
 
 
-### Apache WebServer Logs
+### Apache Web Server Logs
+
 Load the logs in your Splunk environment.
-Select all default options provided.
-Important: For the time range, always select All Time.
+
+- Select all default options provided.
+
+- **Important**: For the time range, always select **All Time**.
+
 Now you will review the reports you created in Part 1 and analyze the results.
-Report Analysis for Methods
-Access the Reports tab and select Yours to view the reports created from Part 1.
 
+#### Report Analysis for Methods
 
-Select the report that analyzes the different HTTP methods.
+1. Access the **Reports** tab and select **Yours** to view the reports created from Part 1.
 
+2. Select the report that analyzes the different HTTP methods.
 
-Select Edit > Open in Search.
+3. Select **Edit** > **Open in Search**.
 
+4. Take note of the percent/count of the various methods.
 
-Take note of the percent/count of the various methods.
+5. Change the source from: `source=apache_logs.txt` to `source="apache_attack_logs.txt"`.
 
-
-Change the source from: source=apache_logs.txt to source="apache_attack_logs.txt.
-
-
-Select Save.
-
-
-
-
-
-
-
-
-
-
-
+6. Select **Save**.
 
 Review the updated results and answer the following questions:
 
+ `source="apache_logs.txt" | top method
 
-Did you detect any suspicious changes in HTTP methods? If so which one?
+ ![
 
+ `
 
-Get: Yes, there was a suspicious decrease in GET activity by 29%.
-Post: Yes, there was a suspicious increase in POST activity by 29%.
+ ![
 
+- Did you detect any suspicious changes in HTTP methods? If so which one?
 
-What is that method used for?
+    - Get: Yes, there was a suspicious decrease in GET activity by 29%.
+    - Post: Yes, there was a suspicious increase in POST activity by 29%.
 
+- What is that method used for?
 
-POST is used to submit or update information to a web server.
-Report Analysis for Referrer Domains
-Access the Reports tab and select Yours to view the reports created from Part 1.
+    - POST is used to submit or update information to a web server.
 
+#### Report Analysis for Referrer Domains
 
-Select the report that analyzes the different referrer domains.
+1. Access the **Reports** tab and select **Yours** to view the reports created from Part 1.
 
+2. Select the report that analyzes the different referrer domains.
 
-Select Edit > Open in Search.
+3. Select **Edit** > **Open in Search**.
 
+4. Take note of the different referrer domains.
 
-Take note of the different referrer domains.
+5. Change the source from: `source=apache_logs.txt` to `source="apache_attack_logs.txt"`.
 
+6. Select **Save**.
 
-Change the source from: source=apache_logs.txt to source="apache_attack_logs.txt.
-
-
-Select Save.
 Review the updated results, and answer the following question:
 
+ `
 
-Did you detect any suspicious changes in referrer domains?
+ ![
 
+ `
 
-There were no suspicious referrer domains during the attack.
+ ![
 
+- Did you detect any suspicious changes in referrer domains?
 
-Report Analysis for HTTP Response Codes
-Access the Reports tab and select Yours to view the reports created from Part 1.
+    - There were no suspicious referrer domains during the attack.
 
+#### Report Analysis for HTTP Response Codes
 
-Select the report that analyzes the different HTTP response codes.
+1. Access the **Reports** tab and select **Yours** to view the reports created from Part 1.
 
+2. Select the report that analyzes the different HTTP response codes.
 
-Select Edit > Open in Search.
+3. Select **Edit** > **Open in Search**.
 
+4. Take a note of the different HTTP response codes.
 
-Take a note of the different HTTP response codes.
+5. Change the source from: `source=apache_logs.txt` to `source="apache_attack_logs.txt"`.
 
+6. Select **Save**.
 
-Change the source from: source=apache_logs.txt to source="apache_attack_logs.txt.
-
-
-Select Save.
 Review the updated results and answer the following question:
 
+ `
 
-Did you detect any suspicious changes in HTTP response codes?
+ ![
 
+ `
+ ![
 
-There are several small changes overall, but the most suspicious change detected was the 404 response code increasing from 2% to 15%.
+- Did you detect any suspicious changes in HTTP response codes?
+
+    - There are several small changes overall, but the most suspicious change detected was the 404 response code increasing from 2% to 15%.
+
 Now you will review the alerts you created in Part 1 and analyze the results.
 
-**Alert Analysis for International Activity**
+#### Alert Analysis for International Activity
 
-Access the Alerts tab and select Yours to view the alerts created in Part 1.
+1. Access the **Alerts** tab and select **Yours** to view the alerts created in Part 1.
 
-Select the alert of suspicious volume of international activity.
+2. Select the alert of suspicious volume of international activity.
 
-Select Open in Search.
+3. Select **Open in Search**.
 
-Change the source from: source=apache_logs.txt to source="apache_attack_logs.txt.
+4. Change the source from: `source=apache_logs.txt` to `source="apache_attack_logs.txt"`.
 
 Review the updated results and answer the following questions:
 
-Did you detect a suspicious volume of international activity?
+ `
 
-Yes, there was a suspicious volume of activity in Ukraine at 8:00 p.m. on March 25th.
+ ![
 
-If so, what was the count of the hour it occurred in?
+ `
 
-Ukraine had a count of 1,369 events during the 8:00 p.m. attack.
+ ![
 
-Would your alert be triggered for this activity?
+- Did you detect a suspicious volume of international activity?
 
-Yes, the alert is within the trigger threshold. 
+    - Yes, there was a suspicious volume of activity in Ukraine at 8:00 p.m. on March 25th.
 
-After reviewing, would you change the threshold you previously selected?
+- If so, what was the count of the hour it occurred in?
 
-No change in threshold necessary.
+    - Ukraine had a count of 1,369 events during the 8:00 p.m. attack.
 
-**Alert Analysis for HTTP POST Activity**
+- Would your alert be triggered for this activity?
 
-Access the Alerts tab and select Yours to view the alerts created in Part 1.
+    - Yes, the alert is within the trigger threshold. 
 
-Select the alert of suspicious volume of HTTP POST activity.
+- After reviewing, would you change the threshold you previously selected?
 
-Select Open in Search.
+    - No change in threshold necessary.
 
-Change the source from: source=apache_logs.txt to source="apache_attack_logs.txt.
+#### Alert Analysis for HTTP POST Activity
+
+1. Access the **Alerts** tab and select **Yours** to view the alerts created in Part 1.
+
+2. Select the alert of suspicious volume of HTTP POST activity.
+
+3. Select **Open in Search**.
+
+4. Change the source from: `source=apache_logs.txt` to `source="apache_attack_logs.txt"`.
 
 Review the updated results, and answer the following questions:
 
-Did you detect any suspicious volume of HTTP POST activity?
+ `
 
-Yes, there was a suspicious increase of POST method activities. 
+ ![
 
-If so, what was the count of the hour it occurred in?
+ `
 
-There was a total count of 1,296 events at 8:00 p.m.
+ ![
 
-When did it occur?
+- Did you detect any suspicious volume of HTTP POST activity?
 
-The event occurred at 8:00 p.m. on Wednesday, March 25th.
+    - Yes, there was a suspicious increase of POST method activities. 
 
-After reviewing, would you change the threshold that you previously selected?
+- If so, what was the count of the hour it occurred in?
 
-No change in threshold necessary.
+    - There was a total count of 1,296 events at 8:00 p.m.
+
+- When did it occur?
+
+    - The event occurred at 8:00 p.m. on Wednesday, March 25th.
+
+- After reviewing, would you change the threshold that you previously selected?
+
+    - No change in threshold necessary.
 
 Now you will set up a dashboard and analyze the results.
 
-**Dashboard Setup**
+#### Dashboard Setup
 
 Access the dashboard for Apache WebServer Monitoring.
 
