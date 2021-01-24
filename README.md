@@ -1,6 +1,6 @@
 # Splunk_SOC_Assignment
 
-- In this activity, I played the role of a SOC analyst hired by Virutal Space Industries (VSI) tasked with using Splunk to monitor against potential attacks from JobeCorp.
+In this activity, I played the role of a SOC analyst hired by Virutal Space Industries (VSI) tasked with using Splunk to monitor against potential attacks from JobeCorp.
 
 
 ## Activity File: Part 1 - Master of the SOC
