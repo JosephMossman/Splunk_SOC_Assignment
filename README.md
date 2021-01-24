@@ -3,6 +3,7 @@
 In this activity, I played the role of a SOC analyst hired by Virutal Space Industries (VSI) tasked with using Splunk to monitor against potential attacks from JobeCorp.
 
 
+
 ## Activity File: Part 1 - Master of the SOC
 
 - Each group is playing the role of an SOC analyst at a small company called Virtual Space Industries (VSI), which designs virtual reality programs for businesses.
@@ -266,6 +267,7 @@ You've been provided the following logs:
 
    - Be sure to title all your panels appropriately.
    - Align your dashboard panels as you see fit.
+
 
 
 ## Activity File: Part 2 - Defend Your SOC
@@ -943,7 +945,7 @@ Analyze your dashboard panel of the URI data and answer the following questions:
 
  `source="apache_attack_logs.txt" uri="files/logstash/logstash-1.3.2-monolithic.jar" | timechart span=1h count by uri`
 
- ![logstash_atk](Screenshots/part2_apache_apaatk_column_logstash_uri.png)
+ ![logstash_atk](Screenshots/part2_apache/apaatk_column_logstash_uri.png)
 
  `source="apache_logs.txt" uri="VSI_Account_logon.php" | timechart span=1h count by uri`
 
