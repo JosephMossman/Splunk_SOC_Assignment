@@ -293,8 +293,6 @@ Load the logs in your Splunk environment.
 
 - Select all default options provided.
 - **Important**: For the time range, always select **All Time**.
-    - **Important**: For the time range, always select **All Time**.
-- **Important**: For the time range, always select **All Time**.
 
 Now you will review the reports you created in Part 1 and analyze the results.
 
@@ -308,7 +306,7 @@ Now you will review the reports you created in Part 1 and analyze the results.
 
 4. Take note of the percentages of different severities.
 
-5. Change the source from `source="windows_server_logs.csv"` to source="windows_server_attack_logs.csv"`.
+5. Change the source from `source="windows_server_logs.csv"` to `source="windows_server_attack_logs.csv"`.
 
 6. Select **Save**.
 
