@@ -1062,7 +1062,7 @@ Note: This is a public-facing windows server that VSI employees access.
 
 - Provide a "plain english" description of the rule.
 
-    - For example: "Block all incoming HTTP traffic where the source IP comes from the city of Los Angeles."
+    - **Example**: "Block all incoming HTTP traffic where the source IP comes from the city of Los Angeles."
 
 - Provide a screenshot of the geographic map that justifies why you created this rule.
 
@@ -1074,7 +1074,7 @@ Note: This is a public-facing windows server that VSI employees access.
 
     - Provide a "plain english" description of the rule.
 
-        - Rule: Block all incoming HTTP traffic where the source IP comes from the country of Ukraine."
+        - **Rule**: Block all incoming HTTP traffic where the source IP comes from the country of Ukraine."
 
 #### Question 2
 
@@ -1087,29 +1087,29 @@ Note: This is a public-facing windows server that VSI employees access.
 
     - VSI could look into two other fields “useragent” and “bytes” to identify the attacker.
 
-    - useragent=Mozilla/4.0: Peak count of 1,296 events.
+       - useragent=Mozilla/4.0: Peak count of 1,296 events.
 
-    `source="apache_attack_logs.txt" useragent="Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; SV1; .NET CLR 2.0.50727987787; InfoPath.1).”`
+       `source="apache_attack_logs.txt" useragent="Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; SV1; .NET CLR 2.0.50727987787; InfoPath.1).”`
 
-    ![mozilla](Screenshots/part3_logs/apaatk_useragent_mozilla.png)
+       ![mozilla](Screenshots/part3_logs/apaatk_useragent_mozilla.png)
 
-    - useragent=Chef Client/10.18.2: Peak count of 624 events. 
+       - useragent=Chef Client/10.18.2: Peak count of 624 events. 
 
-    `source="apache_attack_logs.txt" useragent="Chef Client/10.18.2 (ruby-1.9.3-p327; ohai-6.16.0; x86_64-linux; +http://opscode.com)"`
+       `source="apache_attack_logs.txt" useragent="Chef Client/10.18.2 (ruby-1.9.3-p327; ohai-6.16.0; x86_64-linux; +http://opscode.com)"`
 
-    ![ruby](Screenshots/part3_logs/apaatk_useragent_ruby.png)
+       ![ruby](Screenshots/part3_logs/apaatk_useragent_ruby.png)
 
-    - byte 65748: Peak count of 1,296 events.
+       - byte 65748: Peak count of 1,296 events.
 
-    `source="apache_attack_logs.txt" bytes=65748`
+       `source="apache_attack_logs.txt" bytes=65748`
 
-    ![b65748](Screenshots/part3_logs/apaatk_byte_65748.png)
+       ![b65748](Screenshots/part3_logs/apaatk_bytes_65748.png)
 
-    - byte 324: Peak count of 624 events.
+       - byte 324: Peak count of 624 events.
 
-    `source="apache_attack_logs.txt" bytes=324`
+       `source="apache_attack_logs.txt" bytes=324`
 
-    ![b324](Screenshots/part3_logs/apaatk_byte_324.png)
+       ![b324](Screenshots/part3_logs/apaatk_bytes_324.png)
 
     - Rule 1: firewall parameters designed to stop further attacks.
 
