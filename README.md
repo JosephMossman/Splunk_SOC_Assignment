@@ -336,7 +336,7 @@ Review the updated results and answer the following question:
 
 4. Take note of the failed activities percentage.
 
-5. Change the source from `windows_server_logs.csv` to `source="windows_server_attack_logs.csv"`.
+5. Change the source from `source="windows_server_logs.csv"` to `source="windows_server_attack_logs.csv"`.
 
 6. Select **Save**.
 
@@ -366,7 +366,7 @@ Now you will review the alerts you created in Part 1 and analyze the results.
 
 3. Select **Open in Search**.
 
-4. Change the source from `windows_server_logs.csv` to `source="windows_server_attack_logs.csv"`.
+4. Change the source from `source="windows_server_logs.csv"` to `source="windows_server_attack_logs.csv"`.
 
 Review the updated results and answer the following questions:
 
@@ -406,7 +406,7 @@ Review the updated results and answer the following questions:
 
 3. Select **Open in Search**.
 
-4. Change the source from `windows_server_logs.csv` to `source="windows_server_attack_logs.csv"`.
+4. Change the source from `source="windows_server_logs.csv"` to `source="windows_server_attack_logs.csv"`.
 
 Review the updated results, and answer the following questions:
 
@@ -450,7 +450,7 @@ Review the updated results, and answer the following questions:
 
 3. Select **Open in Search**.
 
-4. Change the source from `windows_server_logs.csv` to `source="windows_server_attack_logs.csv"`.
+4. Change the source from `source="windows_server_logs.csv"` to `source="windows_server_attack_logs.csv"`.
 
 Review the updated results and answer the following question:
 
@@ -478,7 +478,7 @@ Now you will set up a dashboard and analyze the results.
 
    - Select **Edit Search**.
 
-   - Change the source from: `windows_server_logs.csv` to `source="windows_server_attack_logs.csv"`.
+   - Change the source from: `source="windows_server_logs.csv"` to `source="windows_server_attack_logs.csv"`.
 
    - Select **Apply**.
 
@@ -685,19 +685,19 @@ Now you will review the reports you created in Part 1 and analyze the results.
 
 4. Take note of the percent/count of the various methods.
 
-5. Change the source from: `source=apache_logs.txt` to `source="apache_attack_logs.txt"`.
+5. Change the source from: `source="apache_logs.txt"` to `source="apache_attack_logs.txt"`.
 
 6. Select **Save**.
 
 Review the updated results and answer the following questions:
 
- `source="apache_logs.txt" | top method
+ `source="apache_logs.txt" | top method`
 
- ![
+ ![methods](Screenshots/part2_apache/apa_report_methods.png)
 
- `
+ `source="apache_attack_logs.txt" | top method`
 
- ![
+ ![methods_atk](Screenshots/part2_apache/apaatk_report_methods.png)
 
 - Did you detect any suspicious changes in HTTP methods? If so which one?
 
@@ -718,19 +718,19 @@ Review the updated results and answer the following questions:
 
 4. Take note of the different referrer domains.
 
-5. Change the source from: `source=apache_logs.txt` to `source="apache_attack_logs.txt"`.
+5. Change the source from: `source="apache_logs.txt"` to `source="apache_attack_logs.txt"`.
 
 6. Select **Save**.
 
 Review the updated results, and answer the following question:
 
- `
+ `source="apache_logs.txt" | top limit=10 referer_domain`
 
- ![
+ ![refdom](Screenshots/part2_apache/apa_report_refdom.png)
 
- `
+ `source="apache_attack_logs.txt" | top limit=10 referer_domain`
 
- ![
+ ![refdom_atk](Screenshots/part2_apache/apaatk_report_refdom.png)
 
 - Did you detect any suspicious changes in referrer domains?
 
@@ -746,18 +746,19 @@ Review the updated results, and answer the following question:
 
 4. Take a note of the different HTTP response codes.
 
-5. Change the source from: `source=apache_logs.txt` to `source="apache_attack_logs.txt"`.
+5. Change the source from: `source="apache_logs.txt"` to `source="apache_attack_logs.txt"`.
 
 6. Select **Save**.
 
 Review the updated results and answer the following question:
 
- `
+ `source="apache_logs.txt" | top status
 
- ![
+ ![response](Screenshots/part2_apache/apa_report_response.png)
 
- `
- ![
+ `source="apache_attack_logs.tct" | top status
+
+ ![response_atk](Screenshots/part2_apache/apaatk_report_response.png)
 
 - Did you detect any suspicious changes in HTTP response codes?
 
@@ -773,17 +774,17 @@ Now you will review the alerts you created in Part 1 and analyze the results.
 
 3. Select **Open in Search**.
 
-4. Change the source from: `source=apache_logs.txt` to `source="apache_attack_logs.txt"`.
+4. Change the source from: `source="apache_logs.txt"` to `source="apache_attack_logs.txt"`.
 
 Review the updated results and answer the following questions:
 
- `
+ `source="apache_logs.txt" | iplocation clientip | where Country!="United States"`
 
- ![
+ ![clientip](Screenshots/part2_apache/apa_alert_internat.png)
 
- `
+ `source="apache_attack_logs.txt" | iplocation clientip | where Country!="United States"`
 
- ![
+ ![clientip_atk](Screenshots/part2_apache/apaatk_alert_internat.png)
 
 - Did you detect a suspicious volume of international activity?
 
@@ -809,17 +810,17 @@ Review the updated results and answer the following questions:
 
 3. Select **Open in Search**.
 
-4. Change the source from: `source=apache_logs.txt` to `source="apache_attack_logs.txt"`.
+4. Change the source from: `source="apache_logs.txt"` to `source="apache_attack_logs.txt"`.
 
 Review the updated results, and answer the following questions:
 
- `
+ `source="apache_logs.txt" method=POST`
 
- ![
+ ![post](Screenshots/part2_apache/apa_alert_httppost.png)
 
- `
+ `source="apache_attack_logs.txt" method=POST`
 
- ![
+ ![post_atk](Screenshots/part2_apache/apaatk_alert_httppost.png)
 
 - Did you detect any suspicious volume of HTTP POST activity?
 
@@ -841,82 +842,131 @@ Now you will set up a dashboard and analyze the results.
 
 #### Dashboard Setup
 
-Access the dashboard for Apache WebServer Monitoring.
+- Access the dashboard for Apache WebServer Monitoring.
 
-Select Edit.
+- Select **Edit**.
 
-Access each panel and complete the following:
+- Access each panel and complete the following:
 
-Select Edit Search.
+    - Select **Edit Search**.
 
-Change the source from: source=apache_logs.txt to source="apache_attack_logs.txt
+    - Change the source from: `source="apache_logs.txt"` to `source="apache_attack_logs.txt"`.
 
-Select Apply.
+    - Select **Apply**.
 
-Save the whole dashboard.
+- Save the whole dashboard.
 
-Edit the time on the whole dashboard to be All Time.
+- Edit the time on the whole dashboard to be **All Time**.
 
-**Dashboard Analysis for Time Chart of HTTP Methods**
+#### Dashboard Analysis for Time Chart of HTTP Methods
 
 Analyze your new dashboard results and answer the following questions:
 
-Does anything stand out as suspicious?
+ `source="apache_logs.txt" method=GET | timechart span=1h count by method`
 
-There was suspicious activity with the method “GET” from 5:00 p.m. to 7:00 p.m. on Wednesday, March 25th and with the method “POST” from 7:00 p.m. to 8:00 p.m. on Wednesday, Match 25th. 
+ ![get](Screenshots/part2_apache/apa_line_get_method.png)
 
-Which method seems to be used in the attack?
+ `source="apache_attack_logs" method=GET | timechart span=1h count by method`
 
-The “GET” method seemed to be used in the attack.
-The “POST” method seemed to be used in the attack.
+ ![get_atk](Screenshots/part2_apache/apaatk_line_get_method.png)
 
-At what times did the attack start and stop?
+ `source="apache_logs.txt" method=POST | timechart span=1h count by method`
 
-GET: Started at 5:00 p.m. on Wednesday, March 25th and stopped at 7:00 p.m. on Wednesday, March 25th.
-POST: Started at 7:00 p.m on Wednesday, March 25th and stopped at 8:00 p.m. on Wednesday, March 25th.
+ ![post](Screenshots/part2_apache/apa_line_post_method.png)
 
-What is the peak count of the top method during the attack?
+ `source="apache_attack_logs" method=POST | timechart span=1h count by method`
 
-GET: Peak count during the attack was 1,296.
-POST: Peak count during the attack was 729.
+ ![post_atk](Screenshots/part2_apache/apaatk_line_post_method.png)
 
-**Dashboard Analysis for Cluster Map**
+- Does anything stand out as suspicious?
+
+    - There was suspicious activity with the method “GET” from 5:00 p.m. to 7:00 p.m. on Wednesday, March 25th and with the method “POST” from 7:00 p.m. to 8:00 p.m. on Wednesday, Match 25th. 
+
+- Which method seems to be used in the attack?
+
+    - The “GET” method seemed to be used in the attack.
+    - The “POST” method seemed to be used in the attack.
+
+- At what times did the attack start and stop?
+
+    - GET: Started at 5:00 p.m. on Wednesday, March 25th and stopped at 7:00 p.m. on Wednesday, March 25th.
+    - POST: Started at 7:00 p.m on Wednesday, March 25th and stopped at 8:00 p.m. on Wednesday, March 25th.
+
+- What is the peak count of the top method during the attack?
+
+    - GET: Peak count during the attack was 1,296.
+    - POST: Peak count during the attack was 729.
+
+#### Dashboard Analysis for Cluster Map
 
 Analyze your new cluster map results and answer the following questions:
 
-Does anything stand out as suspicious?
+ `source="apache_logs.txt" | iplocation clientip | where Country!="United States" | geostats count`
 
-There was suspicious activity in the country of Ukraine, specifically in the cities of Kiev and Kharkiv.
+ ![cluster](Screenshots/part2_apache/apa_cluster_location.png)
 
-Which new city, country on the map has a high volume of activity?
+ `source="apache_attack_logs.txt" | iplocation clientip | where Country!="United States" | geostats count`
 
-Hint: Zoom in on the map.
+ ![cluster_atk](Screenshots/part2_apache/apaatk_cluster_location.png)
 
-The city of Kiev, Ukraine had a high volume of activity.
-The city of Kharkiv, Ukraine had a high volume of activity.
+ `source="apache_attack_logs.txt" | iplocation clientip | where Country!="United States" | geostats count`
 
-What is the count of that city?
+ ![kiev](Screenshots/part2_apache/apaatk_cluster_kiev.png)
 
-Kiev: Count of 872.
-Kharkiv: Count of 432.
+ `source="apache_attack_logs.txt" | iplocation clientip | where Country!="United States" | geostats count`
 
-**Dashboard Analysis for URI Data**
+ ![kharkiv](Screenshots/part2_apache/apaatk_cluster_kharkiv.png)
+
+- Does anything stand out as suspicious?
+
+    - There was suspicious activity in the country of Ukraine, specifically in the cities of Kiev and Kharkiv.
+
+- Which new city, country on the map has a high volume of activity?
+
+    **Hint**: Zoom in on the map.
+
+    - The city of Kiev, Ukraine had a high volume of activity.
+    - The city of Kharkiv, Ukraine had a high volume of activity.
+
+- What is the count of that city?
+
+    - Kiev: Count of 872.
+    - Kharkiv: Count of 432.
+
+#### Dashboard Analysis for URI Data
 
 Analyze your dashboard panel of the URI data and answer the following questions:
 
-Does anything stand out as suspicious?
+ `source="apacche_logs.txt" uri="/files/logstash/logstash-1.3.2-monolithic.jar" | timechart span=1h count by uri`
 
-There was suspicious activity with the URI “/files/logstash/logstash-1.3.2-monolithic.jar” from 6:00 p.m. to 7:00 p.m. on Wednesday, March 25th and with the URI “/VSI_Account_logon.php” from 8:00 p.m. to 9:00 p.m. on Wednesday, March 25th.
+ ![logstash](Screenshots/part2_apache/apa_column_logstash_uri.png)
 
-What URI is hit the most?
+ `source="apache_attack_logs.txt" uri="files/logstash/logstash-1.3.2-monolithic.jar" | timechart span=1h count by uri`
 
-The URI “/VSI_Account_logon.php” was hit the most with 1,415 events.
+ ![logstash_atk](Screenshots/part2_apache_apaatk_column_logstash_uri.png)
 
-Based on the URI being accessed, what could the attacker potentially be doing?
+ `source="apache_logs.txt" uri="VSI_Account_logon.php" | timechart span=1h count by uri`
 
-Based on the URI “VSI_Logon.php” being accessed, the attacker may be trying to brute force the VSI logon page. 
+ ![vsi](Screenshots/part2_apache/apa_column_vsi_uri.png)
 
-##Activity File: Part 3 - Protecting VSI from Future Attacks
+ `source="apache_attack_logs.txt" uri="VSI_Account_logon.php" | timechart span=1h count by uri`
+
+ ![vsi_atk](Screenshots/part2_apache/apaatk_column_vsi_uri.png)
+
+- Does anything stand out as suspicious?
+
+    - There was suspicious activity with the URI “/files/logstash/logstash-1.3.2-monolithic.jar” from 6:00 p.m. to 7:00 p.m. on Wednesday, March 25th and with the URI “/VSI_Account_logon.php” from 8:00 p.m. to 9:00 p.m. on Wednesday, March 25th.
+
+- What URI is hit the most?
+
+    - The URI “/VSI_Account_logon.php” was hit the most with 1,415 events.
+
+- Based on the URI being accessed, what could the attacker potentially be doing?
+
+    -  Based on the URI “VSI_Logon.php” being accessed, the attacker may be trying to brute force the VSI logon page. 
+
+
+## Activity File: Part 3 - Protecting VSI from Future Attacks
 
 In the previous part, you set up your SOC and monitored attacks from JobeCorp. Now, you will need to design mitigation strategies to protect VSI from future attacks.
 
@@ -935,7 +985,7 @@ Windows Attack Logs
 Apache WebServer Logs
 Apache WebServer Attack Logs
 
-###Part 1: Windows Server Attack
+### Windows Server Attack
 
 Note: This is a public-facing windows server that VSI employees access.
 
@@ -977,7 +1027,7 @@ Extending the time required before a locked out account can be unlocked.
 
 Lowering the alert thresholds of accounts becoming locked out..
 
-###Part 2: Apache Webserver Attack:
+### Apache Webserver Attack:
 
 **Question 1**
 
