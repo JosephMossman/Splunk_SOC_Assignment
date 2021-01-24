@@ -754,11 +754,11 @@ Review the updated results, and answer the following question:
 
 Review the updated results and answer the following question:
 
- `source="apache_logs.txt" | top status
+ `source="apache_logs.txt" | top status`
 
  ![response](Screenshots/part2_apache/apa_report_response.png)
 
- `source="apache_attack_logs.tct" | top status
+ `source="apache_attack_logs.tct" | top status`
 
  ![response_atk](Screenshots/part2_apache/apaatk_report_response.png)
 
@@ -972,7 +972,6 @@ Analyze your dashboard panel of the URI data and answer the following questions:
 
 In the previous part, you set up your SOC and monitored attacks from JobeCorp. Now, you will need to design mitigation strategies to protect VSI from future attacks.
 
-
 You are tasked with using your findings from the Master of SOC activity to answer questions about mitigation strategies.
 
 System
@@ -981,104 +980,149 @@ You will be using the Splunk app located in the Ubuntu VM.
 
 Logs
 
-Use the same log files you used during the Master of SOC activity:
-Windows Logs
-Windows Attack Logs
-Apache WebServer Logs
-Apache WebServer Attack Logs
+Use the same log files from the previous parts:
+
+- **Windows Server Logs**
+
+   - [Windows Server Logs](Resources/windows_server_logs.csv)
+   - [Windows Server Attack Logs](Resources/windows_server_attack_logs.csv)
+
+- **Apache Server Logs**
+
+   - [Apache Logs](Resources/apache_logs.txt)
+   - [Apache Attack Logs](Resources/apache_attack_logs.txt)
 
 ### Windows Server Attack
 
 Note: This is a public-facing windows server that VSI employees access.
 
-**Question 1**
+#### Question 1
 
-Several users were impacted during the attack on March 25th.
+- Several users were impacted during the attack on March 25th.
 
-user_a
+    - user=user_a
 
-The “user_a” user was responsible for the “A user account was locked out” signature.
+    `source="windows_server_attack_logs.csv" user=user_a`
 
-This signature indicates the attacker was trying to brute force attack into the user_a account.
+    ![usera](Screenshots/part3_logs/win_usera.png)
 
-The password for user_a should be changed to a new, complex password to remove unintended access to this account.
+    `source="windows_server_attack_logs.csv" user=user_a`
 
-If the user_a account continues to be locked out, user_a could be changed to a different user name.
+    ![usera_atk](Screenshots/part3_logs/winatk_usera.png)
 
-user_k
+    - The “user_a” user was responsible for the “A user account was locked out” signature.
 
-The user “user_k” was responsible for the “An attempt was made to reset an accounts password” signature.
+    - This signature indicates the attacker was trying to brute force attack into the user_a account.
 
-There was no evidence of success by the attacker of resetting the password to gain access into the account.
+    - The password for user_a should be changed to a new, complex password to remove unintended access to this account.
 
-The alert thresholds for the user_k account should be edited with lower alert threshold settings as a mitigation solution for future attacks.
+    - If the user_a account continues to be locked out, user_a could be changed to a different user name.
 
-Based on the attack signatures, what mitigations would you recommend to protect each user account? Provide global mitigations that the whole company can use and individual mitigations that are specific to each user.
-A global mitigation solution would be to allow whitelisting to specific user accounts based on their respective source IP Addresses.
-Another mitigation solution would be to lower the alert thresholds of the user_a and user_k accounts.
+    - user=user_k
 
-**Question 2**
+    `source="windows_server_attack_logs.csv" user=user_k`
 
-VSI has insider information that JobeCorp attempted to target users by sending "Bad Logins" to lock out every user.
+    ![userk](Screenshots/part3_logs/win_userk.png)
 
-The Sysadmin should set up an account locked out duration policy. The account lockout duration policy setting establishes time value parameters to accounts that have become locked out.
+    `source="windows_server_attack_logs.csv" user=user_k`
 
-What sort of mitigation could you use to protect against this?
+    ![userk_atk](Screenshots/part3_logs/winatk_userk.png)
 
-Extending the time required before a locked out account can be unlocked.
+    - The user “user_k” was responsible for the “An attempt was made to reset an accounts password” signature.
 
-Lowering the alert thresholds of accounts becoming locked out..
+    - There was no evidence of success by the attacker of resetting the password to gain access into the account.
 
-### Apache Webserver Attack:
+    - The alert thresholds for the user_k account should be edited with lower alert threshold settings as a mitigation solution for future attacks.
 
-**Question 1**
+- Based on the attack signatures, what mitigations would you recommend to protect each user account? Provide global mitigations that the whole company can use and individual mitigations that are specific to each user.
 
-Based on the geographic map, recommend a firewall rule that the networking team should implement.
+    - A global mitigation solution would be to allow whitelisting to specific user accounts based on their respective source IP Addresses.
 
-Provide a "plain english" description of the rule.
+    - Another mitigation solution would be to lower the alert thresholds of the user_a and user_k accounts.
 
-For example: "Block all incoming HTTP traffic where the source IP comes from the city of Los Angeles."
+#### Question 2
 
-Provide a screenshot of the geographic map that justifies why you created this rule.
+- VSI has insider information that JobeCorp attempted to target users by sending "Bad Logins" to lock out every user.
 
-The attack is occurring in Ukraine, specifically the cities of Kiev and Kharkiv.
+    - The Sysadmin should set up an account locked out duration policy. The account lockout duration policy setting establishes time value parameters to accounts that have become locked out.
 
-Provide a "plain english" description of the rule.
+- What sort of mitigation could you use to protect against this?
 
-Rule: Block all incoming HTTP traffic where the source IP comes from the country of Ukraine."
+    `source="windows_server_attack_logs.csv" signature="A user account was locked out"`
 
-**Question 2**
+    ![lockedout](Screenshots/par3_logs/lockedout_alert.png)
 
-VSI has insider information that JobeCorp will launch the same web server attack but use a different IP each time in order to avoid being stopped by the rule you just created.
+    - Lowering the alert thresholds of accounts becoming locked out.
 
-What other rules can you create to protect VSI from attacks against your webserver?
+    - Extending the time required before a locked out account can be unlocked.
 
-Conceive of two more rules in "plain english".
-Hint: Look for other fields that indicate the attacker. 
+### Apache Web Server Attack:
 
-VSI could look into two other fields “useragent” and “bytes” to identify the attacker.
+#### Question 1
 
-useragent Mozilla/4.0: Peak count of 1,296 events.
+- Based on the geographic map, recommend a firewall rule that the networking team should implement.
 
+- Provide a "plain english" description of the rule.
 
-useragent Chef Client/10.18.2: Peak count of 624 events. 
+    - For example: "Block all incoming HTTP traffic where the source IP comes from the city of Los Angeles."
 
+- Provide a screenshot of the geographic map that justifies why you created this rule.
 
+    `source="apache_attack_logs.txt" | iplocation clientip | where Country!="United States" | geostats count`
 
-byte 65748: Peak count of 1,296 events.
+    ![clientip](Screenshots/part2_apache/apaatk_cluster_kiev.png)
 
-byte 324: Peak count of 624 events.
+    - The attack is occurring in Ukraine, specifically the cities of Kiev and Kharkiv.
 
-Rule 1: firewall parameters designed to stop further attacks.
+    - Provide a "plain english" description of the rule.
 
-Block all incoming HTTP traffic from the useragent "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; SV1; .NET CLR 2.0.50727987787; InfoPath.1).”
+        - Rule: Block all incoming HTTP traffic where the source IP comes from the country of Ukraine."
 
-Block all incoming HTTP traffic where the bytes count is 65748.
+#### Question 2
 
-Rule 2: firewall parameters designed to stop further attacks.
+- VSI has insider information that JobeCorp will launch the same web server attack but use a different IP each time in order to avoid being stopped by the rule you just created.
 
-Block all incoming HTTP traffic from the useragent “Chef Client/10.18.2 
-(ruby-1.9.3-p327; ohai-6.16.0; x86_64-linux; +http://opscode.com).”
+- What other rules can you create to protect VSI from attacks against your webserver?
 
-Block all incoming HTTP traffic where the bytes count is 324.
+    - Conceive of two more rules in "plain english".
+      **Hint**: Look for other fields that indicate the attacker. 
+
+    - VSI could look into two other fields “useragent” and “bytes” to identify the attacker.
+
+    - useragent=Mozilla/4.0: Peak count of 1,296 events.
+
+      `source="apache_attack_logs.txt" useragent="Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; SV1; .NET CLR 2.0.50727987787; InfoPath.1).”`
+
+      ![mozilla](Screenshots/part3_logs/apaatk_useragent_mozilla.png)
+
+    - useragent=Chef Client/10.18.2: Peak count of 624 events. 
+
+      `source="apache_attack_logs.txt" useragent="Chef Client/10.18.2 (ruby-1.9.3-p327; ohai-6.16.0; x86_64-linux; +http://opscode.com)"`
+
+      ![ruby](Screenshots/part3_logs/apaatk_useragent_ruby.png)
+
+    - byte 65748: Peak count of 1,296 events.
+
+      `source="apache_attack_logs.txt" byte=65748`
+
+      ![b65748](Screenshots/part3_logs/apaatk_byte_65748.png)
+
+    - byte 324: Peak count of 624 events.
+
+      `source="apache_attack_logs.txt" bytes=324`
+
+      ![b324](Screenshots/part3_logs/apaatk_byte_324.png)
+
+    - Rule 1: firewall parameters designed to stop further attacks.
+
+        - Block all incoming HTTP traffic from the useragent "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; SV1; .NET CLR 2.0.50727987787; InfoPath.1).”
+
+        - Block all incoming HTTP traffic where the bytes count is 65748.
+
+    - Rule 2: firewall parameters designed to stop further attacks.
+
+        - Block all incoming HTTP traffic from the useragent “Chef Client/10.18.2 (ruby-1.9.3-p327; ohai-6.16.0; x86_64-linux; +http://opscode.com).”
+
+        - Block all incoming HTTP traffic where the bytes count is 324.
+
 
