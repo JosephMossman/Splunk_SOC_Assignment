@@ -1099,13 +1099,13 @@ Note: This is a public-facing windows server that VSI employees access.
 
         ![ruby](Screenshots/part3_logs/apaatk_useragent_ruby.png)
 
-        - byte=65748: Peak count of 1,296 events.
+        - bytes=65748: Peak count of 1,296 events.
 
         `source="apache_attack_logs.txt" bytes=65748`
 
         ![b65748](Screenshots/part3_logs/apaatk_bytes_65748.png)
 
-        - byte=324: Peak count of 624 events.
+        - bytes=324: Peak count of 624 events.
 
         `source="apache_attack_logs.txt" bytes=324`
 
