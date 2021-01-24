@@ -1080,10 +1080,9 @@ Note: This is a public-facing windows server that VSI employees access.
 
 - VSI has insider information that JobeCorp will launch the same web server attack but use a different IP each time in order to avoid being stopped by the rule you just created.
 
-- What other rules can you create to protect VSI from attacks against your webserver?
+- Conceive two more rules in "plain english" that you can create to protect VSI from attacks against your webserver?
 
-    - Conceive of two more rules in "plain english".
-      **Hint**: Look for other fields that indicate the attacker. 
+  **Hint**: Look for other fields that indicate the attacker. 
 
     - VSI could look into two other fields “useragent” and “bytes” to identify the attacker.
 
